@@ -1,433 +1,1063 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Bella Vita • Estética Avançada</title>
-
-<link rel="preconnect" href="https://fonts.gstatic.com
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Montserrat:wght@300;400;500;600&display=swap
-
-<style>
-
-:root{
-    --navy:#0b2348;
-    --gold:#c7a15e;
-    --cream:#f8f4ef;
-    --cream-dark:#efe8df;
-    --text:#5f6b7a;
-    --white:#ffffff;
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:'Montserrat',sans-serif;
-    background:linear-gradient(135deg,var(--cream),var(--cream-dark));
-    color:var(--text);
-}
-
-/* MENU */
-
-nav{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    z-index:1000;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    padding:22px 8%;
-
-    background:rgba(255,255,255,.9);
-    backdrop-filter:blur(10px);
-
-    border-bottom:1px solid rgba(199,161,94,.15);
-}
-
-.logo{
-    font-family:'Cormorant Garamond',serif;
-    font-size:38px;
-    font-weight:700;
-    color:var(--navy);
-}
-
-.menu{
-    display:flex;
-    gap:30px;
-}
-
-.menu a{
-    text-decoration:none;
-    color:var(--navy);
-    font-weight:500;
-}
-
-.menu a:hover{
-    color:var(--gold);
-}
-
-/* HERO */
-
-.hero{
-    min-height:100vh;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-
-    padding:120px 20px;
-}
-
-.hero-content{
-    max-width:900px;
-}
-
-.hero span{
-    color:var(--gold);
-    letter-spacing:4px;
-    font-size:14px;
-}
-
-.hero h1{
-    font-family:'Cormorant Garamond',serif;
-    font-size:90px;
-    line-height:.95;
-    color:var(--navy);
-    margin:20px 0;
-}
-
-.hero p{
-    max-width:700px;
-    margin:auto;
-    line-height:1.8;
-    font-size:20px;
-}
-
-.btn{
-    display:inline-block;
-
-    margin-top:40px;
-
-    padding:18px 40px;
-
-    border-radius:50px;
-
-    border:1px solid var(--gold);
-
-    color:var(--navy);
-
-    text-decoration:none;
-
-    font-weight:600;
-
-    transition:.3s;
-}
-
-.btn:hover{
-    background:var(--gold);
-    color:white;
-}
-
-/* GERAL */
-
-section{
-    padding:100px 8%;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:60px;
-}
-
-.section-title h2{
-    font-family:'Cormorant Garamond',serif;
-    color:var(--navy);
-    font-size:60px;
-}
-
-.line{
-    width:80px;
-    height:2px;
-    background:var(--gold);
-    margin:15px auto;
-}
-
-/* SOBRE */
-
-.sobre{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:60px;
-    align-items:center;
-}
-
-.placeholder{
-    height:450px;
-
-    border-radius:25px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    background:white;
-
-    box-shadow:0 15px 30px rgba(0,0,0,.05);
-
-    color:var(--gold);
-
-    font-size:22px;
-}
-
-.sobre-texto h3{
-    color:var(--navy);
-    font-size:36px;
-    margin-bottom:20px;
-}
-
-.sobre-texto p{
-    line-height:2;
-}
-
-/* PROCEDIMENTOS */
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-}
-
-.card{
-    background:white;
-    padding:35px;
-    border-radius:25px;
-
-    box-shadow:0 15px 25px rgba(0,0,0,.05);
-
-    transition:.3s;
-}
-
-.card:hover{
-    transform:translateY(-8px);
-}
-
-.card-icon{
-    font-size:34px;
-}
-
-.card h3{
-    color:var(--navy);
-    margin:15px 0;
-}
-
-/* DIFERENCIAIS */
-
-.diferenciais{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
-}
-
-.item{
-    background:white;
-    padding:30px;
-    text-align:center;
-    border-radius:25px;
-    box-shadow:0 15px 25px rgba(0,0,0,.05);
-}
-
-.item span{
-    font-size:38px;
-}
-
-.item h3{
-    color:var(--navy);
-    margin-top:15px;
-}
-
-/* CTA */
-
-.cta{
-    text-align:center;
-}
-
-.cta h2{
-    font-family:'Cormorant Garamond',serif;
-    font-size:70px;
-    color:var(--navy);
-    margin-bottom:20px;
-}
-
-.cta p{
-    max-width:650px;
-    margin:auto;
-}
-
-/* FOOTER */
-
-footer{
-    background:var(--navy);
-    color:white;
-    text-align:center;
-    padding:50px 20px;
-}
-
-footer h3{
-    font-family:'Cormorant Garamond',serif;
-    font-size:32px;
-    margin-bottom:10px;
-}
-
-/* RESPONSIVO */
-
-@media(max-width:900px){
-
-    .menu{
-        display:none;
-    }
-
-    .hero h1{
-        font-size:55px;
-    }
-
-    .sobre{
-        grid-template-columns:1fr;
-    }
-
-    .section-title h2{
-        font-size:42px;
-    }
-
-    .cta h2{
-        font-size:48px;
-    }
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Clínica Bella Vita | Estética Avançada</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f8f4ec;
+            color: #24364a;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background:
+                radial-gradient(circle at top right,
+                rgba(184,154,90,0.18),
+                transparent 35%),
+                linear-gradient(135deg,
+                #0B2340,
+                #102D4F);
+
+            color: white;
+            padding: 75px 20px 65px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border: 1px solid rgba(215,190,134,0.35);
+            border-radius: 50%;
+            top: -150px;
+            left: -100px;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border: 1px solid rgba(215,190,134,0.25);
+            border-radius: 50%;
+            bottom: -250px;
+            right: -100px;
+        }
+
+        .logo {
+            position: relative;
+            z-index: 2;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .logo-symbol {
+            width: 85px;
+            height: 85px;
+            margin: auto;
+            border: 2px solid #d7be86;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d7be86;
+            font-family: Georgia, serif;
+            font-size: 42px;
+        }
+
+        header h1 {
+            position: relative;
+            z-index: 2;
+            font-family: Georgia, serif;
+            font-size: 3.2rem;
+            letter-spacing: 4px;
+            font-weight: 500;
+        }
+
+        header h1 span {
+            color: #d7be86;
+        }
+
+        header p {
+            position: relative;
+            z-index: 2;
+            margin-top: 12px;
+            color: #e6dcc7;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        /* =========================
+           NAV
+        ========================= */
+
+        nav {
+            background: rgba(255,255,255,0.97);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 35px;
+            padding: 18px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(11,35,64,0.10);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #0B2340;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 1px;
+            background: #b89a5a;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #b89a5a;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 550px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+
+            background:
+                linear-gradient(
+                    rgba(248,244,236,0.88),
+                    rgba(248,244,236,0.96)
+                );
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .tag {
+            display: inline-block;
+            border: 1px solid #b89a5a;
+            color: #92733a;
+            padding: 8px 25px;
+            border-radius: 30px;
+            letter-spacing: 3px;
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .hero h2 {
+            font-family: Georgia, serif;
+            font-size: 4rem;
+            line-height: 1.1;
+            font-weight: 500;
+            color: #0B2340;
+        }
+
+        .hero h2 span {
+            color: #b08b47;
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: 25px auto;
+            color: #596575;
+            font-size: 1.1rem;
+        }
+
+        .botao {
+            background: #0B2340;
+            color: white;
+            text-decoration: none;
+            padding: 16px 35px;
+            display: inline-block;
+            border-radius: 4px;
+            margin-top: 15px;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            border: 1px solid #0B2340;
+        }
+
+        .botao:hover {
+            background: #b89a5a;
+            border-color: #b89a5a;
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 90px 20px;
+        }
+
+        .section-label {
+            text-align: center;
+            color: #b08b47;
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        section h2 {
+            text-align: center;
+            color: #0B2340;
+            font-family: Georgia, serif;
+            font-size: 2.5rem;
+            font-weight: 500;
+            margin-bottom: 45px;
+        }
+
+        .intro {
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+            color: #5c6875;
+            font-size: 1.05rem;
+        }
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px 28px;
+            border: 1px solid #e5dac3;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .card::before {
+            content: "";
+            width: 35px;
+            height: 2px;
+            background: #b89a5a;
+            position: absolute;
+            top: 0;
+            left: 28px;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(11,35,64,0.10);
+        }
+
+        .card-number {
+            color: #b89a5a;
+            font-family: Georgia, serif;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+            color: #0B2340;
+            font-family: Georgia, serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+        }
+
+        .card p {
+            color: #6a737d;
+            font-size: 0.95rem;
+        }
+
+        /* =========================
+           DIFERENCIAIS
+        ========================= */
+
+        .diferenciais {
+            background: #0B2340;
+            max-width: none;
+            color: white;
+        }
+
+        .diferenciais-container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .diferenciais h2 {
+            color: white;
+        }
+
+        .diferenciais .section-label {
+            color: #d7be86;
+        }
+
+        .diferenciais-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .diferencial {
+            text-align: center;
+            padding: 30px 20px;
+            border: 1px solid rgba(215,190,134,0.3);
+        }
+
+        .icone {
+            font-size: 30px;
+            color: #d7be86;
+            margin-bottom: 15px;
+        }
+
+        .diferencial h3 {
+            font-family: Georgia, serif;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .diferencial p {
+            color: #c8d0d9;
+            font-size: 14px;
+        }
+
+        /* =========================
+           AGENDAMENTO
+        ========================= */
+
+        #agendamento {
+            background: #f8f4ec;
+        }
+
+        form {
+            background: white;
+            padding: 40px;
+            border: 1px solid #e3d7bf;
+            max-width: 700px;
+            margin: auto;
+            box-shadow: 0 10px 35px rgba(11,35,64,0.06);
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #596575;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 16px;
+            border: 1px solid #ddd5c8;
+            border-radius: 3px;
+            background: #fffdf9;
+            color: #333;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #b89a5a;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            background: #0B2340;
+            color: white;
+            border: none;
+            padding: 16px;
+            cursor: pointer;
+            font-size: 15px;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #b89a5a;
+        }
+
+        /* =========================
+           CONTATO
+        ========================= */
+
+        .contato-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            text-align: center;
+        }
+
+        .contato-item {
+            background: white;
+            padding: 30px 20px;
+            border: 1px solid #e3d7bf;
+        }
+
+        .contato-item strong {
+            display: block;
+            color: #0B2340;
+            margin-bottom: 8px;
+        }
+
+        .contato-item span {
+            color: #6b747e;
+            font-size: 14px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #071a30;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        footer h3 {
+            font-family: Georgia, serif;
+            color: #d7be86;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #aeb8c3;
+            font-size: 13px;
+        }
+
+        /* =========================
+           WHATSAPP
+        ========================= */
+
+        .whatsapp {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #0B2340;
+            color: #d7be86;
+            text-decoration: none;
+            padding: 15px 22px;
+            border-radius: 40px;
+            font-weight: 600;
+            border: 1px solid #d7be86;
+            box-shadow: 0 5px 20px rgba(0,0,0,.25);
+            z-index: 2000;
+            transition: 0.3s;
+        }
+
+        .whatsapp:hover {
+            background: #b89a5a;
+            color: white;
+        }
+
+        /* =========================
+           RESPONSIVO
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 55px 20px;
+            }
+
+            header h1 {
+                font-size: 2.2rem;
+                letter-spacing: 2px;
+            }
+
+            header p {
+                font-size: 0.7rem;
+                letter-spacing: 2px;
+            }
+
+            nav {
+                gap: 15px;
+                overflow-x: auto;
+                justify-content: flex-start;
+            }
+
+            nav a {
+                white-space: nowrap;
+                font-size: 12px;
+            }
+
+            .hero {
+                min-height: 500px;
+            }
+
+            .hero h2 {
+                font-size: 2.7rem;
+            }
+
+            section {
+                padding: 65px 20px;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            form {
+                padding: 25px;
+            }
+
+            .whatsapp {
+                bottom: 15px;
+                right: 15px;
+                padding: 13px 18px;
+            }
+        }
+
+    </style>
 </head>
+
 <body>
 
-<nav>
+    <!-- =========================
+         HEADER
+    ========================= -->
 
-<div class="logo">Bella Vita</div>
+    <header>
 
-<div class="menu">
-#sobreSobre</a>
-#procedimentosProcedimentos</a>
-#diferenciaisDiferenciais</a>
-#contatoContato</a>
-</div>
+        <div class="logo">
+            <div class="logo-symbol">B</div>
+        </div>
 
-</nav>
+        <h1>CLÍNICA <span>BELLA VITA</span></h1>
 
-<section class="hero">
+        <p>Estética Avançada Facial & Corporal</p>
 
-<div class="hero-content">
+    </header>
 
-<span>ESTÉTICA AVANÇADA</span>
 
-<h1>
-Realçando<br>
-sua essência
-</h1>
+    <!-- =========================
+         MENU
+    ========================= -->
 
-<p>
-Tratamentos personalizados, tecnologia moderna e atendimento humanizado para valorizar sua beleza com elegância e naturalidade.
-</p>
+    <nav>
 
-#
-Agendar Avaliação
-</a>
+        <a href="#sobre">Sobre</a>
 
-</div>
+        <a href="#procedimentos">Procedimentos</a>
 
-</section>
+        <a href="#diferenciais">Diferenciais</a>
 
-<section id="sobre">
+        <a href="#agendamento">Agendamento</a>
 
-<div class="section-title">
-<h2>Sobre a Clínica</h2>
-<div class="line"></div>
-</div>
+        <a href="#contato">Contato</a>
 
-<div class="sobre">
+    </nav>
 
-<div class="placeholder">
-Foto da Clínica
-</div>
 
-<div class="sobre-texto">
+    <!-- =========================
+         HERO
+    ========================= -->
 
-<h3>Elegância, Tecnologia e Confiança</h3>
+    <section class="hero">
 
-<p>
-Nossa missão é proporcionar um atendimento exclusivo, confortável e personalizado. Utilizamos técnicas modernas e protocolos avançados para oferecer resultados naturais e sofisticados.
-</p>
+        <div class="hero-content">
 
-</div>
+            <div class="tag">
+                Beleza • Saúde • Bem-estar
+            </div>
 
-</div>
+            <h2>
+                Realce sua beleza,
+                <span>valorize sua essência.</span>
+            </h2>
 
-</section>
+            <p>
+                Tratamentos estéticos personalizados para quem busca
+                cuidado, sofisticação e resultados naturais.
+            </p>
 
-<section id="procedimentos">
+            <a class="botao" href="#agendamento">
+                SOLICITAR AGENDAMENTO
+            </a>
 
-<div class="section-title">
-<h2>Procedimentos</h2>
-<div class="line"></div>
-</div>
+        </div>
 
-<div class="cards">
+    </section>
 
-<div class="card">
-<div class="card-icon">✨</div>
-<h3>Botox</h3>
-<p>Suavização de linhas de expressão.</p>
-</div>
 
-<div class="card">
-<div class="card-icon">💎</div>
-<h3>Preenchimento</h3>
-<p>Harmonização facial natural.</p>
-</div>
+    <!-- =========================
+         SOBRE
+    ========================= -->
 
-<div class="card">
-<div class="card-icon">🌿</div>
-<h3>Bioestimuladores</h3>
-<p>Estímulo natural de colágeno.</p>
-</div>
+    <section id="sobre">
 
-<div class="card">
-<div class="card-icon">⭐</div>
-<h3>Skinbooster</h3>
-<p>Hidratação profunda da pele.</p>
-</div>
+        <div class="section-label">
+            Conheça a clínica
+        </div>
 
-</div>
+        <h2>
+            Cuidado em cada detalhe
+        </h2>
 
-</section>
+        <p class="intro">
 
-<section id="diferenciais">
+            A Clínica Bella Vita é uma clínica fictícia criada para
+            demonstração e testes de desenvolvimento web.
 
-<div class="section-title">
-<h2>Diferenciais</h2>
-<div class="line"></div>
-</div>
+            <br><br>
 
-<div class="diferenciais
+            Nossa proposta é oferecer uma experiência sofisticada,
+            acolhedora e personalizada, utilizando protocolos modernos
+            de estética facial e corporal.
+
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         PROCEDIMENTOS
+    ========================= -->
+
+    <section id="procedimentos">
+
+        <div class="section-label">
+            Nossos tratamentos
+        </div>
+
+        <h2>
+            Procedimentos
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="card-number">01</div>
+
+                <h3>Botox</h3>
+
+                <p>
+                    Procedimento estético voltado à suavização
+                    da aparência de linhas de expressão.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-number">02</div>
+
+                <h3>Preenchimento Facial</h3>
+
+                <p>
+                    Técnica estética para definição e harmonização
+                    de determinados contornos faciais.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-number">03</div>
+
+                <h3>Bioestimuladores</h3>
+
+                <p>
+                    Tratamentos voltados à estimulação de colágeno
+                    e melhora da aparência da pele.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-number">04</div>
+
+                <h3>Limpeza de Pele</h3>
+
+                <p>
+                    Protocolo de higienização e cuidados para
+                    revitalização da pele.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-number">05</div>
+
+                <h3>Microagulhamento</h3>
+
+                <p>
+                    Procedimento estético utilizado para auxiliar
+                    na melhora da textura e aparência da pele.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-number">06</div>
+
+                <h3>PEIM</h3>
+
+                <p>
+                    Procedimento estético destinado ao tratamento
+                    de microvasos aparentes.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         DIFERENCIAIS
+    ========================= -->
+
+    <section class="diferenciais" id="diferenciais">
+
+        <div class="diferenciais-container">
+
+            <div class="section-label">
+                Nossa proposta
+            </div>
+
+            <h2>
+                Uma experiência diferenciada
+            </h2>
+
+            <div class="diferenciais-grid">
+
+                <div class="diferencial">
+
+                    <div class="icone">✦</div>
+
+                    <h3>Atendimento Personalizado</h3>
+
+                    <p>
+                        Cada atendimento é pensado de acordo
+                        com as necessidades de cada cliente.
+                    </p>
+
+                </div>
+
+
+                <div class="diferencial">
+
+                    <div class="icone">◇</div>
+
+                    <h3>Tecnologia</h3>
+
+                    <p>
+                        Protocolos modernos para uma experiência
+                        estética completa.
+                    </p>
+
+                </div>
+
+
+                <div class="diferencial">
+
+                    <div class="icone">♡</div>
+
+                    <h3>Bem-estar</h3>
+
+                    <p>
+                        Um ambiente criado para proporcionar
+                        conforto e tranquilidade.
+                    </p>
+
+                </div>
+
+
+                <div class="diferencial">
+
+                    <div class="icone">✧</div>
+
+                    <h3>Naturalidade</h3>
+
+                    <p>
+                        Valorização da beleza individual e
+                        resultados com aparência natural.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         AGENDAMENTO
+    ========================= -->
+
+    <section id="agendamento">
+
+        <div class="section-label">
+            Atendimento
+        </div>
+
+        <h2>
+            Solicite seu agendamento
+        </h2>
+
+        <form id="formulario">
+
+            <p class="form-title">
+                Preencha os dados abaixo para realizar
+                uma simulação de agendamento.
+            </p>
+
+            <input
+                type="text"
+                id="nome"
+                placeholder="Nome completo"
+                required
+            >
+
+            <input
+                type="tel"
+                id="telefone"
+                placeholder="WhatsApp"
+                required
+            >
+
+            <select id="procedimento" required>
+
+                <option value="">
+                    Selecione um procedimento
+                </option>
+
+                <option>Botox</option>
+
+                <option>Preenchimento Facial</option>
+
+                <option>Bioestimuladores</option>
+
+                <option>Limpeza de Pele</option>
+
+                <option>Microagulhamento</option>
+
+                <option>PEIM</option>
+
+            </select>
+
+            <textarea
+                id="obs"
+                placeholder="Observações">
+            </textarea>
+
+            <button type="submit">
+                ENVIAR SOLICITAÇÃO
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- =========================
+         CONTATO
+    ========================= -->
+
+    <section id="contato">
+
+        <div class="section-label">
+            Fale conosco
+        </div>
+
+        <h2>
+            Contato
+        </h2>
+
+        <div class="contato-box">
+
+            <div class="contato-item">
+
+                <strong>Endereço</strong>
+
+                <span>
+                    Rua das Flores, 250<br>
+                    São Paulo - SP
+                </span>
+
+            </div>
+
+
+            <div class="contato-item">
+
+                <strong>WhatsApp</strong>
+
+                <span>
+                    (11) 99999-0000
+                </span>
+
+            </div>
+
+
+            <div class="contato-item">
+
+                <strong>E-mail</strong>
+
+                <span>
+                    contato@bellavita.com
+                </span>
+
+            </div>
+
+
+            <div class="contato-item">
+
+                <strong>Horário</strong>
+
+                <span>
+                    Segunda a sexta<br>
+                    09:00 às 19:00
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <h3>CLÍNICA BELLA VITA</h3>
+
+        <p>
+            Projeto demonstrativo — informações fictícias.
+        </p>
+
+        <p style="margin-top:10px;">
+            © 2026 Clínica Bella Vita
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         WHATSAPP
+    ========================= -->
+
+    <a
+        class="whatsapp"
+        href="#agendamento">
+
+        💬 Agendar
+
+    </a>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        document
+            .getElementById("formulario")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                const nome =
+                    document.getElementById("nome").value;
+
+                const telefone =
+                    document.getElementById("telefone").value;
+
+                const procedimento =
+                    document.getElementById("procedimento").value;
+
+                alert(
+                    "SIMULAÇÃO DE AGENDAMENTO\n\n" +
+                    "Nome: " + nome + "\n" +
+                    "WhatsApp: " + telefone + "\n" +
+                    "Procedimento: " + procedimento +
+                    "\n\nAgendamento registrado apenas para demonstração."
+                );
+
+                this.reset();
+
+            });
+
+    </script>
+
+</body>
+
+</html>
