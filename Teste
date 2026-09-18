@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Clínica de Biomedicina Estética</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#faf7fd;
+    color:#333;
+}
+
+header{
+    background:linear-gradient(135deg,#8F6BAE,#B58AD8);
+    color:white;
+    padding:60px 20px;
+    text-align:center;
+}
+
+header h1{
+    font-size:3rem;
+}
+
+header p{
+    margin-top:10px;
+    font-size:1.1rem;
+}
+
+nav{
+    background:white;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    padding:15px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+
+nav a{
+    text-decoration:none;
+    color:#8F6BAE;
+    font-weight:bold;
+}
+
+.hero{
+    text-align:center;
+    padding:80px 20px;
+}
+
+.hero h2{
+    color:#8F6BAE;
+    font-size:2.5rem;
+}
+
+.hero p{
+    max-width:800px;
+    margin:20px auto;
+}
+
+.botao{
+    background:#8F6BAE;
+    color:white;
+    text-decoration:none;
+    padding:15px 30px;
+    display:inline-block;
+    border-radius:10px;
+    margin-top:20px;
+}
+
+section{
+    max-width:1200px;
+    margin:auto;
+    padding:70px 20px;
+}
+
+section h2{
+    text-align:center;
+    color:#8F6BAE;
+    margin-bottom:30px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.card h3{
+    margin-bottom:10px;
+    color:#8F6BAE;
+}
+
+form{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 3px 15px rgba(0,0,0,.1);
+    max-width:700px;
+    margin:auto;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:15px;
+    margin-bottom:15px;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+button{
+    width:100%;
+    background:#8F6BAE;
+    color:white;
+    border:none;
+    padding:15px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+footer{
+    background:#8F6BAE;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+.whatsapp{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    color:white;
+    text-decoration:none;
+    padding:15px 20px;
+    border-radius:50px;
+    font-weight:bold;
+    box-shadow:0 4px 10px rgba(0,0,0,.3);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Clínica Bella Vita</h1>
+
+<p>
+Biomedicina Estética • Botox • Preenchimento • Bioestimuladores
+</p>
+
+</header>
+
+<nav>
+#sobreSobre</a>
+#procedimentosProcedimentos</a>
+#agendamentoAgendamento</a>
+<aontatoContato</a>
+</nav>
+
+<section class="hero">
+
+<h2>Realce sua beleza com segurança</h2>
+
+<p>
+Tratamentos personalizados realizados por profissionais qualificados
+com foco em resultados naturais.
+</p>
+
+<a class="botao"
+href="https://wa.me/CLINICA_WHATSAPP"
+target="_blank">
+Agendar pelo WhatsApp
+</a>
+
+</section>
+
+<sectionp style="text-align:center;">
+Somos especializados em biomedicina estética, oferecendo
+atendimento humanizado, tecnologia de ponta e protocolos
+modernos para rejuvenescimento facial e corporal.
+</p>
+
+</section>
+
+<section id="procedimentos">
+
+<h2>Procedimentos</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Botox</h3>
+<p>Redução de rugas e linhas de expressão.</p>
+</div>
+
+<div class="card">
+<h3>Preenchimento Facial</h3>
+<p>Harmonização e definição dos contornos faciais.</p>
+</div>
+
+<div class="card">
+<h3>Bioestimuladores</h3>
+<p>Estimulação natural da produção de colágeno.</p>
+</div>
+
+<div class="card">
+<h3>PEIM</h3>
+<p>Tratamento estético para microvasos.</p>
+</div>
+
+<div class="card">
+<h3>Limpeza de Pele</h3>
+<p>Renovação e revitalização da pele.</p>
+</div>
+
+<div class="card">
+<h3>Microagulhamento</h3>
+<p>Melhora da textura e firmeza da pele.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="agendamento">
+
+<h2>Solicite seu Agendamento</h2>
+
+<form id="formulario">
+
+<input
+type="text"
+id="nome"
+placeholder="Nome Completo"
+required>
+
+<input
+type="tel"
+id="telefone"
+placeholder="WhatsApp"
+required>
+
+<select id="procedimento">
+
+<option>Botox</option>
+<option>Preenchimento Facial</option>
+<option>Bioestimuladores</option>
+<option>PEIM</option>
+<option>Limpeza de Pele</option>
+<option>Microagulhamento</option>
+
+</select>
+
+<textarea
+id="obs"
+placeholder="Observações">
+</textarea>
+
+<button type="submit">
+Enviar Agendamento
+</button>
+
+</form>
+
+</section>
+
+<section id="contato">
+
+<h2>Contato</h2>
+
+<p style="text-align:center;">
+📍 Rua Exemplo, 123<br><br>
+📞 (00) 00000-0000<br><br>
+✉ contato@clinicabellavita.com.br
+</p>
+
+</section>
+
+<footer>
+© 2026 Clínica Bella Vita - Todos os Direitos Reservados
+</footer>
+
+<a
+class="whatsapp"
+href="https://wa.me/CLINICA_WHATSAPP"
+cument
+.getElementById("formulario")
+.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+const nome =
+document.getElementById("nome").value;
+
+const telefone =
+document.getElementById("telefone").value;
+
+const procedimento =
+document.getElementById("procedimento").value;
+
+const obs =
+document.getElementById("obs").value;
+
+const mensagem =
+`Olá!
+
+Novo agendamento:
+
+Nome: ${nome}
+Telefone: ${telefone}
+Procedimento: ${procedimento}
+
+Observações:
+${obs}`;
+
+window.open(
+
+`https://wa.me/CLINICA_WHATSAPP?text=${encodeURIComponent(mensagem)}`,
+
+"_blank"
+
+);
+
+});
+
+</script>
+
+</body>
+</html>
