@@ -6,25 +6,20 @@
 
 <title>Clínica Bella Vita</title>
 
-https://fonts.googleapis.com
-https://fonts.gstatic.com
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond0;600&family=Montserrat:wght@300;400;500;600&display=swap
-
 <style>
 
 :root{
-    --azul:#08224B;
-    --azul-hover:#10346e;
-    --dourado:#C8A36A;
-    --creme:#F8F5F0;
-    --branco:#FFFFFF;
-    --texto:#5a6475;
+    --azul:#0B2348;
+    --dourado:#C9A15C;
+    --creme:#F7F4EF;
+    --texto:#555;
 }
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
 html{
@@ -34,127 +29,98 @@ html{
 body{
     background:var(--creme);
     color:var(--texto);
-    font-family:'Montserrat',sans-serif;
 }
-
-/* MENU */
 
 nav{
     position:fixed;
     top:0;
     left:0;
     width:100%;
-    background:rgba(248,245,240,.95);
-    backdrop-filter:blur(10px);
+    background:white;
     padding:20px 8%;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    z-index:1000;
-    border-bottom:1px solid rgba(200,163,106,.2);
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+    z-index:999;
 }
 
 .logo{
+    font-size:28px;
+    font-weight:bold;
     color:var(--azul);
-    font-size:34px;
-    font-family:'Cormorant Garamond',serif;
-    font-weight:600;
 }
 
 .menu{
     display:flex;
-    gap:30px;
+    gap:25px;
 }
 
 .menu a{
     text-decoration:none;
     color:var(--azul);
-    font-weight:500;
-    transition:.3s;
+    font-weight:bold;
 }
 
 .menu a:hover{
     color:var(--dourado);
 }
 
-/* HERO */
-
 .hero{
     min-height:100vh;
+    background:linear-gradient(
+        135deg,
+        #F7F4EF,
+        #EFE7DC
+    );
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
     text-align:center;
-    padding:120px 20px;
-}
-
-.hero-content{
-    max-width:850px;
-}
-
-.hero-sub{
-    color:var(--dourado);
-    letter-spacing:4px;
-    font-size:14px;
-    margin-bottom:20px;
+    padding:120px 20px 80px;
 }
 
 .hero h1{
-    font-family:'Cormorant Garamond',serif;
+    font-size:64px;
+    margin-bottom:20px;
     color:var(--azul);
-    font-size:5rem;
-    font-weight:500;
-    line-height:1;
-    margin-bottom:25px;
 }
 
 .hero p{
-    font-size:1.2rem;
-    line-height:1.9;
+    font-size:22px;
     max-width:700px;
     margin:auto;
+    line-height:1.6;
 }
 
 .botao{
     display:inline-block;
-    margin-top:40px;
-    padding:16px 36px;
-    border:1px solid var(--dourado);
-    border-radius:50px;
-    text-decoration:none;
-    color:var(--azul);
-    font-weight:600;
-    transition:.3s;
-}
-
-.botao:hover{
+    margin-top:30px;
     background:var(--dourado);
+    padding:16px 30px;
+    border-radius:10px;
+    text-decoration:none;
     color:white;
+    font-weight:bold;
 }
-
-/* SEÇÕES */
 
 .section{
-    padding:100px 8%;
+    padding:80px 8%;
 }
 
 .section h2{
     text-align:center;
+    margin-bottom:40px;
+    font-size:40px;
     color:var(--azul);
-    font-family:'Cormorant Garamond',serif;
-    font-size:56px;
-    margin-bottom:50px;
 }
 
 .sobre{
     max-width:900px;
     margin:auto;
     text-align:center;
-    line-height:2;
-    font-size:1.1rem;
+    line-height:1.8;
 }
-
-/* PROCEDIMENTOS */
 
 .cards{
     display:grid;
@@ -163,209 +129,143 @@ nav{
 }
 
 .card{
-    background:var(--branco);
-    padding:35px;
-    border-radius:20px;
-    border:1px solid rgba(200,163,106,.20);
-    transition:.3s;
-}
-
-.card:hover{
-    transform:translateY(-5px);
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    border:1px solid rgba(201,161,92,.2);
+    box-shadow:0 5px 15px rgba(0,0,0,.05);
 }
 
 .card h3{
+    margin-bottom:10px;
     color:var(--azul);
-    margin-bottom:15px;
 }
-
-/* DIFERENCIAIS */
 
 .diferenciais{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:25px;
-}
-
-.item{
-    background:white;
-    padding:35px;
-    border-radius:20px;
     text-align:center;
-    border:1px solid rgba(200,163,106,.20);
 }
 
-.item h3{
-    color:var(--azul);
-    margin-bottom:15px;
+.diferencial{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    border:1px solid rgba(201,161,92,.2);
 }
-
-/* INSTAGRAM */
 
 .instagram{
     background:var(--azul);
-    text-align:center;
     color:white;
+    text-align:center;
 }
 
 .instagram h2{
     color:white;
 }
 
-.instagram p{
-    margin-bottom:25px;
-    font-size:1.2rem;
-}
-
-.instagram .botao{
-    color:white;
-    border-color:var(--dourado);
-}
-
-/* CTA */
-
 .cta{
+    background:#EFE7DC;
     text-align:center;
 }
-
-.cta p{
-    max-width:700px;
-    margin:auto;
-    line-height:1.8;
-}
-
-/* FOOTER */
 
 footer{
     background:var(--azul);
     color:white;
     text-align:center;
-    padding:40px 20px;
-    border-top:3px solid var(--dourado);
+    padding:30px;
 }
-
-/* WHATSAPP */
 
 .whatsapp{
     position:fixed;
-    right:20px;
     bottom:20px;
+    right:20px;
     background:#25D366;
     color:white;
     text-decoration:none;
     padding:15px 25px;
-    border-radius:40px;
+    border-radius:50px;
     font-weight:bold;
-    box-shadow:0 6px 20px rgba(0,0,0,.2);
 }
-
-/* MOBILE */
 
 @media(max-width:768px){
 
     .hero h1{
-        font-size:3.3rem;
-    }
-
-    .section h2{
         font-size:42px;
     }
 
     .menu{
         display:none;
     }
+
 }
 
 </style>
 </head>
-
 <body>
 
 <nav>
 
-<div class="logo">
-Bella Vita
-</div>
+    <div class="logo">
+        Bella Vita
+    </div>
 
-<div class="menu">
-#sobreSobre</a>
-#procedimentosProcedimentos</a>
-#instagramInstagram</a>
-#contatoContato</a>
-</div>
+    <div class="menu">
+        #sobreSobre</a>
+        #procedimentosProcedimentos</a>
+        #instagramInstagram</a>
+        #contatoContato</a>
+    </div>
 
 </nav>
 
 <section class="hero">
 
-<div class="hero-content">
+    <div>
 
-<div class="hero-sub">
-ESTÉTICA AVANÇADA
-</div>
+        <h1>Clínica Bella Vita</h1>
 
-<h1>
-Realçando sua essência
-</h1>
+        <p>
+            Biomedicina Estética Avançada.
+            Tecnologia, segurança e atendimento personalizado
+            para realçar sua beleza com naturalidade.
+        </p>
 
-<p>
-Biomedicina estética moderna com foco em segurança,
-naturalidade e resultados elegantes para valorizar
-a sua beleza em cada detalhe.
-</p>
+        <a
+            class="botao"
+            href="https://wa.me/5543999999999"
+            target="_blank">
+            Agendar Avaliação
+        </a>
 
-#
-Agendar Avaliação
-</a>
-
-</div>
+    </div>
 
 </section>
 
 <section id="sobre" class="section">
 
-<h2>Sobre a Clínica</h2>
+    <h2>Sobre a Clínica</h2>
 
-<div class="sobre">
-Oferecemos tratamentos estéticos modernos,
-protocolos individualizados e atendimento humanizado.
-Nosso objetivo é proporcionar confiança,
-bem-estar e resultados naturais para cada paciente.
-</div>
+    <div class="sobre">
+        Oferecemos tratamentos estéticos modernos,
+        protocolos personalizados e atendimento humanizado,
+        proporcionando segurança, conforto e resultados naturais.
+    </div>
 
 </section>
 
 <section id="procedimentos" class="section">
 
-<h2>Procedimentos</h2>
+    <h2>Procedimentos</h2>
 
-<div class="cards">
+    <div class="cards">
 
-<div class="card">
-<h3>Toxina Botulínica</h3>
-<p>Suavização de rugas e linhas de expressão.</p>
-</div>
+        <div class="card">
+            <h3>Toxina Botulínica</h3>
+            <p>Suavização de rugas e linhas de expressão.</p>
+        </div>
 
-<div class="card">
-<h3>Preenchimento Facial</h3>
-<p>Definição e harmonização facial.</p>
-</div>
-
-<div class="card">
-<h3>Bioestimuladores</h3>
-<p>Estímulo natural de colágeno.</p>
-</div>
-
-<div class="card">
-<h3>PEIM</h3>
-<p>Tratamento de microvasos.</p>
-</div>
-
-<div class="card">
-<h3>Skinbooster</h3>
-<p>Hidratação profunda e revitalização.</p>
-</div>
-
-<div class="card">
-<h3>Microagulhamento</h3>
+        <div class="card">
+            <h3>Preenchimento Facial</h3>
+ 
