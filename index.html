@@ -4,402 +4,332 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bella Vita | Estética Avançada</title>
+<title>Bella Vita</title>
 
-<link relonts.googleapis.com
-<link relonts.gstatic.com
+https://fonts.googleapis.com
+<link //fonts.gstatic.com
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:;500;600&display=swap
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"oot{
-    --navy:#0B2348;
-    --navy-dark:#07162E;
-    --gold:#C7A15E;
-    --gold-light:#D8BC87;
+<style>
 
-    --marble:#F8F4EF;
-    --beige:#F2ECE5;
-
-    --text:#667085;
-    --white:#ffffff;
+:root{
+--azul:#0B2348;
+--azul-escuro:#07162E;
+--dourado:#C8A66A;
+--bege:#F8F4EF;
+--bege2:#EFE8DF;
+--texto:#5D6675;
 }
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 html{
-    scroll-behavior:smooth;
+scroll-behavior:smooth;
 }
 
 body{
-    font-family:'Montserrat',sans-serif;
-    color:var(--text);
-    background:
-    radial-gradient(circle at top left,
-    rgba(255,255,255,.9),
-    transparent 35%),
-
-    radial-gradient(circle at bottom right,
-    rgba(255,255,255,.8),
-    transparent 30%),
-
-    linear-gradient(
-    135deg,
-    var(--marble),
-    var(--beige)
-    );
-
-    overflow-x:hidden;
+font-family:'Montserrat',sans-serif;
+color:var(--texto);
+background:
+radial-gradient(circle at top left, rgba(255,255,255,.8), transparent 30%),
+radial-gradient(circle at bottom right, rgba(255,255,255,.7), transparent 30%),
+linear-gradient(135deg,var(--bege),var(--bege2));
 }
 
 /* MENU */
 
 nav{
-    position:fixed;
-    top:0;
-    width:100%;
-    padding:22px 8%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    background:rgba(255,255,255,.75);
-    backdrop-filter:blur(20px);
-
-    border-bottom:1px solid rgba(199,161,94,.15);
-
-    z-index:999;
+position:fixed;
+top:0;
+width:100%;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(255,255,255,.8);
+backdrop-filter:blur(12px);
+z-index:999;
+border-bottom:1px solid rgba(200,166,106,.15);
 }
 
 .logo{
-    font-family:'Cormorant Garamond',serif;
-    font-size:38px;
-    color:var(--navy);
-    font-weight:700;
-    letter-spacing:1px;
+font-family:'Cormorant Garamond',serif;
+font-size:38px;
+font-weight:700;
+color:var(--azul);
 }
 
 .menu{
-    display:flex;
-    gap:35px;
+display:flex;
+gap:30px;
 }
 
 .menu a{
-    text-decoration:none;
-    color:var(--navy);
-    font-weight:500;
-    transition:.3s;
+text-decoration:none;
+color:var(--azul);
+font-weight:500;
 }
 
 .menu a:hover{
-    color:var(--gold);
+color:var(--dourado);
 }
 
 /* HERO */
 
 .hero{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:120px 20px;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:120px 20px;
 }
 
 .hero-content{
-    max-width:950px;
+max-width:900px;
 }
 
-.subtitulo{
-    color:var(--gold);
-    letter-spacing:4px;
-    font-size:14px;
-    margin-bottom:25px;
+.hero small{
+letter-spacing:4px;
+color:var(--dourado);
 }
 
 .hero h1{
-    font-family:'Cormorant Garamond',serif;
-    font-size:110px;
-    line-height:.9;
-    color:var(--navy);
-    font-weight:600;
+font-family:'Cormorant Garamond',serif;
+font-size:110px;
+line-height:.9;
+color:var(--azul);
+margin:25px 0;
 }
 
 .hero p{
-    margin-top:35px;
-    font-size:20px;
-    line-height:1.9;
-    max-width:700px;
-    margin-left:auto;
-    margin-right:auto;
+font-size:20px;
+line-height:1.9;
+max-width:700px;
+margin:auto;
 }
 
 .botao{
-    display:inline-block;
-    margin-top:45px;
-
-    padding:18px 42px;
-
-    border:1px solid var(--gold);
-
-    border-radius:60px;
-
-    text-decoration:none;
-
-    color:var(--navy);
-
-    font-weight:600;
-
-    letter-spacing:2px;
-
-    transition:.3s;
+display:inline-block;
+margin-top:40px;
+padding:18px 45px;
+text-decoration:none;
+border-radius:50px;
+border:1px solid var(--dourado);
+color:var(--azul);
+font-weight:600;
+letter-spacing:2px;
+transition:.3s;
 }
 
 .botao:hover{
-    background:var(--gold);
-    color:white;
-    transform:translateY(-3px);
+background:var(--dourado);
+color:white;
+}
+
+/* TITULOS */
+
+.titulo{
+text-align:center;
+margin-bottom:70px;
+}
+
+.titulo h2{
+font-family:'Cormorant Garamond',serif;
+font-size:70px;
+color:var(--azul);
+}
+
+.titulo::after{
+content:"";
+display:block;
+width:80px;
+height:2px;
+background:var(--dourado);
+margin:20px auto 0;
 }
 
 /* SEÇÕES */
 
-.section{
-    padding:120px 8%;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:70px;
-}
-
-.section-title h2{
-    font-family:'Cormorant Garamond',serif;
-    color:var(--navy);
-    font-size:70px;
-    font-weight:600;
-}
-
-.section-title::after{
-    content:"";
-    display:block;
-    width:80px;
-    height:2px;
-    background:var(--gold);
-    margin:20px auto 0;
+section{
+padding:120px 8%;
 }
 
 /* SOBRE */
 
-.sobre-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:60px;
-    align-items:center;
+.sobre{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
 }
 
-.foto-placeholder{
-
-    min-height:450px;
-
-    border-radius:30px;
-
-    background:
-    linear-gradient(
-    135deg,
-    #ffffff,
-    #f2ece5
-    );
-
-    border:1px solid rgba(199,161,94,.20);
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    color:var(--gold);
-    font-size:22px;
-
-    box-shadow:
-    0 20px 50px rgba(0,0,0,.05);
+.placeholder{
+height:500px;
+border-radius:30px;
+background:
+linear-gradient(
+135deg,
+#ffffff,
+#f4eee7
+);
+border:1px solid rgba(200,166,106,.2);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+color:var(--dourado);
+box-shadow:0 20px 40px rgba(0,0,0,.05);
 }
 
 .sobre-texto h3{
-    color:var(--navy);
-    font-size:34px;
-    margin-bottom:20px;
-    font-family:'Cormorant Garamond',serif;
+font-family:'Cormorant Garamond',serif;
+font-size:42px;
+color:var(--azul);
+margin-bottom:20px;
 }
 
 .sobre-texto p{
-    line-height:2;
+line-height:2;
 }
 
-/* PROCEDIMENTOS */
+/* CARDS */
 
 .cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
 }
 
 .card{
-
-    background:white;
-
-    padding:40px;
-
-    border-radius:30px;
-
-    box-shadow:
-    0 20px 40px rgba(0,0,0,.05);
-
-    border:1px solid rgba(199,161,94,.15);
-
-    transition:.3s;
+background:white;
+padding:40px;
+border-radius:30px;
+box-shadow:0 15px 35px rgba(0,0,0,.05);
+border:1px solid rgba(200,166,106,.15);
+transition:.3s;
 }
 
 .card:hover{
-    transform:translateY(-8px);
+transform:translateY(-8px);
 }
 
-.icone{
-    font-size:34px;
-    margin-bottom:20px;
+.card span{
+font-size:36px;
+display:block;
+margin-bottom:15px;
 }
 
 .card h3{
-    color:var(--navy);
-    margin-bottom:15px;
+color:var(--azul);
+margin-bottom:15px;
 }
 
 /* DIFERENCIAIS */
 
 .diferenciais{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:25px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
 }
 
-.diferencial{
-
-    background:white;
-
-    text-align:center;
-
-    padding:40px 25px;
-
-    border-radius:25px;
-
-    box-shadow:
-    0 15px 35px rgba(0,0,0,.05);
+.item{
+background:white;
+padding:35px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 15px 35px rgba(0,0,0,.05);
 }
 
-.diferencial span{
-    display:block;
-    font-size:36px;
-    margin-bottom:15px;
+.item span{
+font-size:40px;
+display:block;
+margin-bottom:15px;
 }
 
-.diferencial h3{
-    color:var(--navy);
+.item h3{
+color:var(--azul);
 }
 
 /* CTA */
 
 .cta{
-
-    text-align:center;
-
-    background:
-    linear-gradient(
-    135deg,
-    rgba(255,255,255,.65),
-    rgba(255,255,255,.85)
-    );
-
-    border-top:1px solid rgba(199,161,94,.15);
-    border-bottom:1px solid rgba(199,161,94,.15);
+text-align:center;
+background:rgba(255,255,255,.5);
 }
 
 .cta h2{
-    font-family:'Cormorant Garamond',serif;
-    color:var(--navy);
-    font-size:72px;
-    margin-bottom:20px;
+font-family:'Cormorant Garamond',serif;
+font-size:80px;
+color:var(--azul);
+margin-bottom:20px;
 }
 
 /* FOOTER */
 
 footer{
-    background:var(--navy-dark);
-    color:white;
-    text-align:center;
-    padding:60px 20px;
-    border-top:3px solid var(--gold);
+background:var(--azul-escuro);
+color:white;
+text-align:center;
+padding:60px 20px;
+border-top:3px solid var(--dourado);
 }
 
 footer h3{
-    font-family:'Cormorant Garamond',serif;
-    font-size:32px;
+font-family:'Cormorant Garamond',serif;
+font-size:34px;
 }
 
 /* WHATSAPP */
 
 .whatsapp{
-    position:fixed;
-    right:25px;
-    bottom:25px;
-
-    background:#25D366;
-
-    color:white;
-
-    text-decoration:none;
-
-    padding:16px 28px;
-
-    border-radius:60px;
-
-    font-weight:bold;
-
-    box-shadow:
-    0 15px 30px rgba(0,0,0,.15);
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+text-decoration:none;
+padding:15px 25px;
+border-radius:50px;
+font-weight:bold;
 }
 
 /* RESPONSIVO */
 
 @media(max-width:900px){
 
-    .menu{
-        display:none;
-    }
+.menu{
+display:none;
+}
 
-    .hero h1{
-        font-size:65px;
-    }
+.hero h1{
+font-size:60px;
+}
 
-    .sobre-grid{
-        grid-template-columns:1fr;
-    }
+.titulo h2{
+font-size:50px;
+}
 
-    .diferenciais{
-        grid-template-columns:1fr;
-    }
+.cta h2{
+font-size:50px;
+}
 
-    .section-title h2{
-        font-size:50px;
-    }
+.sobre{
+grid-template-columns:1fr;
+}
 
-    .cta h2{
-        font-size:50px;
-    }
+.diferenciais{
+grid-template-columns:1fr;
+}
 
 }
 
 </style>
 </head>
-
 <body>
 
 <nav>
@@ -421,9 +351,7 @@ Bella Vita
 
 <div class="hero-content">
 
-<div class="subtitulo">
-ESTÉTICA AVANÇADA
-</div>
+<small>ESTÉTICA AVANÇADA</small>
 
 <h1>
 Realçando<br>
@@ -431,9 +359,7 @@ sua essência
 </h1>
 
 <p>
-Tratamentos personalizados, tecnologia avançada e
-atendimento exclusivo para valorizar sua beleza com
-naturalidade e sofisticação.
+Tratamentos personalizados, tecnologia moderna e atendimento exclusivo para valorizar sua beleza com elegância, naturalidade e sofisticação.
 </p>
 
 #
@@ -444,15 +370,15 @@ AGENDAR AVALIAÇÃO
 
 </section>
 
-<section id="sobre" class="section">
+<section id="sobre">
 
-<div class="section-title">
+<div class="titulo">
 <h2>Sobre Nós</h2>
 </div>
 
-<div class="sobre-grid">
+<div class="sobre">
 
-<div class="foto-placeholder">
+<div class="placeholder">
 Foto da Clínica
 </div>
 
@@ -461,10 +387,7 @@ Foto da Clínica
 <h3>Experiência, Elegância e Confiança</h3>
 
 <p>
-Na Bella Vita cada tratamento é planejado de forma
-individualizada, combinando técnicas modernas,
-segurança e excelência para proporcionar resultados
-naturais e harmoniosos.
+Na Bella Vita cada atendimento é planejado com atenção aos detalhes. Unimos tecnologia, segurança e personalização para proporcionar resultados naturais e harmônicos.
 </p>
 
 </div>
@@ -473,78 +396,78 @@ naturais e harmoniosos.
 
 </section>
 
-<section id="procedimentos" class="section">
+<section id="procedimentos">
 
-<div class="section-title">
+<div class="titulo">
 <h2>Procedimentos</h2>
 </div>
 
 <div class="cards">
 
 <div class="card">
-<div class="icone">✨</div>
+<span>✨</span>
 <h3>Toxina Botulínica</h3>
-<p>Suavização de linhas de expressão e rejuvenescimento facial.</p>
+<p>Suavização de linhas e expressão facial.</p>
 </div>
 
 <div class="card">
-<div class="icone">💎</div>
-<h3>Preenchimento Facial</h3>
-<p>Harmonização facial com naturalidade e elegância.</p>
+<span>💎</span>
+<h3>Preenchimento</h3>
+<p>Harmonização facial elegante e natural.</p>
 </div>
 
 <div class="card">
-<div class="icone">🌿</div>
+<span>🌿</span>
 <h3>Bioestimuladores</h3>
-<p>Estímulo natural para produção de colágeno.</p>
+<p>Produção natural de colágeno.</p>
 </div>
 
 <div class="card">
-<div class="icone">🩵</div>
+<span>🩵</span>
 <h3>Skinbooster</h3>
-<p>Hidratação profunda e melhora da qualidade da pele.</p>
+<p>Hidratação profunda e revitalização.</p>
 </div>
 
 <div class="card">
-<div class="icone">⚜️</div>
+<span>⭐</span>
 <h3>Microagulhamento</h3>
-<p>Renovação celular e estímulo de regeneração da pele.</p>
+<p>Renovação e qualidade da pele.</p>
 </div>
 
 <div class="card">
-<div class="icone">⭐</div>
+<span>⚜️</span>
 <h3>PEIM</h3>
-<p>Tratamento especializado para microvasos.</p>
+<p>Tratamento para microvasos.</p>
 </div>
 
 </div>
 
 </section>
 
-<section id="diferenciais" class="section">
+<section id="diferenciais">
 
-<div class="section-title">
+<div class="titulo">
 <h2>Diferenciais</h2>
 </div>
 
 <div class="diferenciais">
 
-<div class="diferencial">
+<div class="item">
 <span>🏆</span>
 <h3>Excelência</h3>
 </div>
 
-<div class="diferencial">
+<div class="item">
 <span>💎</span>
 <h3>Tecnologia</h3>
 </div>
 
-<div class="diferencial">
+<div class="item">
 <span>🤍</span>
 <h3>Atendimento</h3>
 </div>
 
-<div class="diferencial">
+<div class="item">
 <span>✨</span>
 <h3>Naturalidade</h3>
 </div>
@@ -553,18 +476,18 @@ naturais e harmoniosos.
 
 </section>
 
-<section id="contato" class="section cta">
+<section id="contato" class="cta">
 
 <h2>
-Pronta para dar o próximo passo?
+Pronta para começar?
 </h2>
 
 <p>
-Agende uma avaliação e descubra o tratamento ideal para você.
+Agende sua avaliação e descubra o melhor tratamento para você.
 </p>
 
 #
-FALAR NO WHATSAPP
+FALE CONOSCO
 </a>
 
 </section>
@@ -576,10 +499,6 @@ FALAR NO WHATSAPP
 <br>
 
 <p>Estética Avançada • Beleza • Bem-estar</p>
-
-<br>
-
-<p>© 2026 Todos os direitos reservados</p>
 
 </footer>
 
