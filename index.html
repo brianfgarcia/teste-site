@@ -3,39 +3,200 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Clínica Bella Vita</title>
 
 <style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
 body{
-  margin:0;
-  font-family:Arial,sans-serif;
+background:#fff;
+color:#333;
+}
+
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:white;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 2px 10px rgba(0,0,0,.08);
+z-index:999;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+color:#0B1F3A;
+}
+
+.menu{
+display:flex;
+gap:25px;
+}
+
+.menu a{
+text-decoration:none;
+color:#0B1F3A;
+font-weight:bold;
 }
 
 .hero{
-  min-height:100vh;
-  background:linear-gradient(135deg,#0B1F3A,#2563EB);
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
+min-height:100vh;
+background:linear-gradient(135deg,#0B1F3A,#2563EB);
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:120px 20px 80px;
+}
+
+.hero h1{
+font-size:64px;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:22px;
+max-width:700px;
+margin:auto;
 }
 
 .botao{
-  display:inline-block;
-  margin-top:20px;
-  padding:15px 30px;
-  background:#D4AF37;
-  color:black;
-  text-decoration:none;
-  border-radius:8px;
-  font-weight:bold;
+display:inline-block;
+margin-top:30px;
+background:#D4AF37;
+padding:16px 30px;
+border-radius:10px;
+text-decoration:none;
+color:black;
+font-weight:bold;
 }
-</style>
 
+.section{
+padding:80px 8%;
+}
+
+.section h2{
+text-align:center;
+margin-bottom:40px;
+font-size:40px;
+color:#0B1F3A;
+}
+
+.sobre{
+max-width:900px;
+margin:auto;
+text-align:center;
+line-height:1.8;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:15px;
+border:1px solid #eee;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.card h3{
+margin-bottom:10px;
+color:#0B1F3A;
+}
+
+.diferenciais{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+text-align:center;
+}
+
+.instagram{
+background:#0B1F3A;
+color:white;
+text-align:center;
+}
+
+.instagram h2{
+color:white;
+}
+
+.cta{
+background:#f5f7fa;
+text-align:center;
+}
+
+footer{
+background:#0B1F3A;
+color:white;
+text-align:center;
+padding:30px;
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+text-decoration:none;
+padding:15px 25px;
+border-radius:50px;
+font-weight:bold;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:42px;
+}
+
+.menu{
+display:none;
+}
+
+}
+
+</style>
 </head>
 
 <body>
+
+<nav>
+
+<div class="logo">
+Bella Vita
+</div>
+
+<div class="menu">
+#sobreSobre</a>
+<a hrefimentosProcedimentos</a>
+#instagramInstagram</a>
+#contatoContato</a>
+</div>
+
+</nav>
 
 <section class="hero">
 
@@ -44,7 +205,9 @@ body{
 <h1>Clínica Bella Vita</h1>
 
 <p>
-Biomedicina Estética Avançada
+Biomedicina Estética Avançada.
+Tecnologia, segurança e atendimento personalizado
+para realçar sua beleza com naturalidade.
 </p>
 
 <a
@@ -57,6 +220,142 @@ Agendar Avaliação
 </div>
 
 </section>
+
+<section id="sobre" class="section">
+
+<h2>Sobre a Clínica</h2>
+
+<div class="sobre">
+
+Oferecemos tratamentos estéticos modernos,
+protocolos personalizados e atendimento humanizado,
+proporcionando segurança, conforto e resultados naturais.
+
+</div>
+
+</section>
+
+<section id="procedimentos" class="section">
+
+<h2>Procedimentos</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Toxina Botulínica</h3>
+<p>Suavização de rugas e linhas de expressão.</p>
+</div>
+
+<div class="card">
+<h3>Preenchimento Facial</h3>
+<p>Harmonização e definição dos contornos faciais.</p>
+</div>
+
+<div class="card">
+<h3>Bioestimuladores</h3>
+<p>Estimulação natural da produção de colágeno.</p>
+</div>
+
+<div class="card">
+<h3>PEIM</h3>
+<p>Tratamento para microvasos.</p>
+</div>
+
+<div class="card">
+<h3>Skinbooster</h3>
+<p>Hidratação profunda e rejuvenescimento.</p>
+</div>
+
+<div class="card">
+<h3>Microagulhamento</h3>
+<p>Melhora da textura e qualidade da pele.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>Diferenciais</h2>
+
+<div class="diferenciais">
+
+<div>
+<h3>Atendimento Humanizado</h3>
+<p>Cuidado personalizado para cada paciente.</p>
+</div>
+
+<div>
+<h3>Tecnologia Moderna</h3>
+<p>Equipamentos e protocolos atualizados.</p>
+</div>
+
+<div>
+<h3>Resultados Naturais</h3>
+<p>Valorização da beleza sem exageros.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="instagram" class="section instagram">
+
+<h2>Instagram</h2>
+
+<p>@clinicabellavita</p>
+
+<br>
+
+<a
+class="botao"
+href="https://instagram.com"
+target="_blank">
+Seguir Perfil
+</a>
+
+</section>
+
+<section id="contato" class="section cta">
+
+<h2>Agende sua Avaliação</h2>
+
+<p>
+Entre em contato pelo WhatsApp.
+</p>
+
+<br>
+
+<a
+class="botao"
+href="https://wa.me/5543999999999"
+target="_blank">
+Falar no WhatsApp
+</a>
+
+</section>
+
+<footer>
+
+<h3>Bella Vita</h3>
+
+<br>
+
+<p>Biomedicina Estética Avançada</p>
+
+<br>
+
+<p>© 2026 Todos os direitos reservados</p>
+
+</footer>
+
+<a
+class="whatsapp"
+href="https://wa.me/5543999999999"
+target="_blank">
+WhatsApp
+</a>
 
 </body>
 </html>
