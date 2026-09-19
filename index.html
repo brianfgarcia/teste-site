@@ -5,126 +5,2084 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Clínica Bella Vita — projeto demonstrativo de estética avançada.">
 <title>Clínica Bella Vita | Estética Avançada</title>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap');
-:root{--navy:#0b2340;--navy2:#102f52;--gold:#b89a5a;--gold2:#d9c28f;--cream:#f8f4ec;--white:#fff;--text:#27384a;--muted:#6e7780;--line:#e5dac6}
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--cream);color:var(--text);font-family:Montserrat,Arial,sans-serif;line-height:1.65}a{text-decoration:none;color:inherit}button,input,select,textarea{font:inherit}.container{width:min(1160px,calc(100% - 40px));margin:auto}
-header{min-height:760px;display:flex;align-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 80% 25%,rgba(217,194,143,.22),transparent 28%),linear-gradient(110deg,var(--navy),#071b31 70%,#102f52);color:#fff}
-header:before{content:"";position:absolute;width:580px;height:580px;border:1px solid rgba(217,194,143,.22);border-radius:50%;right:-230px;top:-170px}header:after{content:"";position:absolute;width:390px;height:390px;border:1px solid rgba(217,194,143,.15);border-radius:50%;left:-260px;bottom:-250px}
-.header-content{position:relative;z-index:2;max-width:760px}.eyebrow{color:var(--gold2);letter-spacing:5px;text-transform:uppercase;font-size:11px;margin-bottom:25px}.brand{display:flex;align-items:center;gap:20px;margin-bottom:22px}.brand-mark{width:86px;height:86px;border:1px solid var(--gold2);border-radius:50%;display:grid;place-items:center;color:var(--gold2);font:500 45px "Cormorant Garamond",serif;position:relative}.brand-mark:after{content:"";position:absolute;width:65px;height:25px;border-top:1px solid var(--gold2);border-radius:50%;transform:rotate(-25deg)}.brand-name{font:500 clamp(38px,6vw,72px)/.9 "Cormorant Garamond",serif;letter-spacing:2px}.brand-name span{color:var(--gold2)}
-header h1{font:500 clamp(48px,7vw,82px)/.92 "Cormorant Garamond",serif;max-width:780px;margin-bottom:25px}header h1 span{color:var(--gold2)}.hero-copy{max-width:650px;color:#d5dde5;font-size:16px}.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border:1px solid var(--gold);text-transform:uppercase;letter-spacing:1.5px;font-size:11px;transition:.25s}.btn-primary{background:var(--gold);color:#fff}.btn-primary:hover{background:#c7aa69;transform:translateY(-2px)}.btn-outline{color:#fff;border-color:rgba(217,194,143,.7)}.btn-outline:hover{background:rgba(217,194,143,.12)}
-.hero-badge{position:absolute;right:8%;top:50%;transform:translateY(-50%);width:250px;height:250px;border:1px solid rgba(217,194,143,.45);border-radius:50%;display:grid;place-items:center;text-align:center;color:var(--gold2);font-size:11px;letter-spacing:3px;text-transform:uppercase}.hero-badge:before{content:"✦";font-size:28px;position:absolute;top:30px}.hero-badge strong{font:500 27px "Cormorant Garamond",serif;letter-spacing:1px}
-nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}.nav-inner{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}.nav-logo{font:500 25px "Cormorant Garamond",serif;color:var(--navy);letter-spacing:2px}.nav-logo span{color:var(--gold)}.nav-links{display:flex;gap:25px;align-items:center}.nav-links a{font-size:10px;text-transform:uppercase;letter-spacing:1.1px;color:var(--navy);position:relative}.nav-links a:after{content:"";position:absolute;left:50%;bottom:-8px;width:0;height:1px;background:var(--gold);transform:translateX(-50%);transition:.25s}.nav-links a:hover:after{width:100%}.menu-btn{display:none;background:none;border:0;color:var(--navy);font-size:24px}
-section{padding:105px 0}.section-head{text-align:center;max-width:720px;margin:0 auto 52px}.section-kicker{color:var(--gold);font-size:11px;letter-spacing:4px;text-transform:uppercase;margin-bottom:12px}.section-head h2{color:var(--navy);font:500 clamp(38px,5vw,57px)/1 "Cormorant Garamond",serif;margin-bottom:17px}.section-head p{color:var(--muted);font-size:14px}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:65px;align-items:center}.about-visual{min-height:480px;position:relative;background:radial-gradient(circle at 30% 25%,rgba(217,194,143,.55),transparent 23%),linear-gradient(145deg,#eee6d7,#fbf8f1);border:1px solid var(--line);overflow:hidden}.about-visual:before{content:"BELLA VITA";position:absolute;left:35px;bottom:28px;color:rgba(11,35,64,.12);font:600 65px "Cormorant Garamond",serif;letter-spacing:4px;transform:rotate(-90deg);transform-origin:left bottom}.about-ornament{position:absolute;inset:45px;border:1px solid rgba(184,154,90,.6)}.about-ornament:before,.about-ornament:after{content:"";position:absolute;border:1px solid rgba(184,154,90,.4);border-radius:50%}.about-ornament:before{width:260px;height:260px;right:-110px;top:-100px}.about-ornament:after{width:220px;height:220px;left:-100px;bottom:-110px}.about-copy h3{font:500 42px/1.05 "Cormorant Garamond",serif;color:var(--navy);margin-bottom:20px}.about-copy p{color:var(--muted);font-size:14px;margin-bottom:17px}.signature{color:var(--gold);font:italic 32px "Cormorant Garamond",serif;margin-top:22px}
-#procedimentos{background:#fff}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{background:var(--cream);border:1px solid var(--line);padding:33px;min-height:235px;position:relative;transition:.3s}.card:hover{transform:translateY(-6px);box-shadow:0 18px 35px rgba(11,35,64,.09)}.card-number{color:var(--gold);font:500 15px "Cormorant Garamond",serif;margin-bottom:22px}.card h3{font:500 28px "Cormorant Garamond",serif;color:var(--navy);margin-bottom:9px}.card p{font-size:13px;color:var(--muted)}.card-line{position:absolute;left:33px;top:0;width:42px;height:2px;background:var(--gold)}
-.dark-section{background:var(--navy);color:#fff}.dark-section .section-kicker{color:var(--gold2)}.dark-section .section-head h2{color:#fff}.dark-section .section-head p{color:#bfc9d4}.features{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.feature{text-align:center;padding:32px 20px;border:1px solid rgba(217,194,143,.22)}.feature-icon{font-size:28px;color:var(--gold2);margin-bottom:15px}.feature h3{font:500 24px "Cormorant Garamond",serif;margin-bottom:8px}.feature p{font-size:12px;color:#bfc9d4}
-.team{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.person{background:#fff;border:1px solid var(--line);padding:18px}.person-photo{height:290px;background:radial-gradient(circle at 50% 35%,rgba(217,194,143,.5),transparent 18%),linear-gradient(145deg,#e9e0d0,#f9f6ef);display:flex;align-items:center;justify-content:center;color:rgba(11,35,64,.3);font:500 72px "Cormorant Garamond",serif}.person-info{padding:20px 4px 5px}.person-info h3{font:500 29px "Cormorant Garamond",serif;color:var(--navy)}.person-info span{color:var(--gold);font-size:10px;letter-spacing:2px;text-transform:uppercase}
-.testimonials{background:#f1ece2}.quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.quote{background:#fff;padding:30px;border:1px solid var(--line)}.quote-mark{font:50px "Cormorant Garamond",serif;color:var(--gold)}.quote p{font:italic 17px "Cormorant Garamond",serif;color:var(--text);margin:5px 0 20px}.quote strong{font-size:11px;color:var(--navy);letter-spacing:1px}
-.booking-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:35px;align-items:start}.booking-info{background:var(--navy);color:#fff;padding:42px}.booking-info h3{font:500 39px/1 "Cormorant Garamond",serif;margin-bottom:15px}.booking-info p{font-size:13px;color:#c9d2dc;margin-bottom:28px}.info-row{border-top:1px solid rgba(217,194,143,.25);padding:16px 0;font-size:12px}.info-row strong{display:block;color:var(--gold2);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px}.booking-form{background:#fff;border:1px solid var(--line);padding:35px}.booking-form h3{font:500 35px "Cormorant Garamond",serif;color:var(--navy);margin-bottom:5px}.form-note{font-size:11px;color:var(--muted);margin-bottom:22px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{margin-bottom:14px}.field.full{grid-column:1/-1}label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--navy);margin-bottom:7px}input,select,textarea{width:100%;border:1px solid #ddd4c5;background:#fffdf8;padding:13px 14px;outline:none;color:var(--text);border-radius:0}input:focus,select:focus,textarea:focus{border-color:var(--gold)}textarea{min-height:100px;resize:vertical}.submit{width:100%;border:0;background:var(--navy);color:#fff;padding:15px;cursor:pointer;letter-spacing:1.5px;font-size:11px;transition:.25s}.submit:hover{background:var(--gold)}
-.calendar{margin-top:28px;border-top:1px solid var(--line);padding-top:25px}.calendar-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.calendar-title strong{font:500 25px "Cormorant Garamond",serif;color:var(--navy)}.calendar-title span{font-size:10px;color:var(--muted)}.days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}.day{border:1px solid var(--line);background:#fffdf8;min-height:42px;display:grid;place-items:center;font-size:11px;cursor:pointer;transition:.2s}.day:hover,.day.selected{background:var(--navy);color:#fff;border-color:var(--navy)}.day.disabled{opacity:.3;cursor:not-allowed}.day-name{border:0;background:none;cursor:default;font-weight:600;color:var(--gold)}.day-name:hover{background:none;color:var(--gold)}.times{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}.time{border:1px solid var(--line);background:#fffdf8;padding:8px 12px;cursor:pointer;font-size:11px}.time:hover,.time.selected{background:var(--gold);color:#fff;border-color:var(--gold)}
-.contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.contact-item{text-align:center;border:1px solid var(--line);padding:30px 15px;background:#fff}.contact-item b{display:block;color:var(--navy);font:500 23px "Cormorant Garamond",serif;margin-bottom:8px}.contact-item span{font-size:11px;color:var(--muted)}
-.map-wrap{border:1px solid var(--line);background:#fff;padding:10px;box-shadow:0 12px 30px rgba(11,35,64,.07)}.map-wrap iframe{width:100%;height:390px;border:0;display:block}.map-caption{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px 8px 8px;flex-wrap:wrap}.map-caption p{font-size:12px;color:var(--muted)}.map-link{display:inline-flex;border:1px solid var(--gold);color:var(--navy);padding:10px 16px;font-size:10px;letter-spacing:1px;text-transform:uppercase}.map-link:hover{background:var(--gold);color:#fff}
-.faq{max-width:850px;margin:auto}.faq-item{background:#fff;border:1px solid var(--line);margin-bottom:9px}.faq-q{width:100%;padding:19px 22px;background:none;border:0;text-align:left;color:var(--navy);font:500 22px "Cormorant Garamond",serif;cursor:pointer;display:flex;justify-content:space-between}.faq-a{display:none;padding:0 22px 20px;color:var(--muted);font-size:13px}.faq-item.open .faq-a{display:block}.faq-item.open .faq-q span{transform:rotate(45deg)}
-.instagram{background:var(--navy);color:#fff}.social-card{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.social-post{aspect-ratio:1;background:linear-gradient(145deg,#e8ddc9,#b89a5a 45%,#0b2340);display:flex;align-items:end;padding:15px;color:#fff;font:500 19px "Cormorant Garamond",serif}.social-post:nth-child(2){background:linear-gradient(145deg,#0b2340,#d9c28f)}.social-post:nth-child(3){background:linear-gradient(145deg,#f4eee3,#102f52)}.social-post:nth-child(4){background:linear-gradient(145deg,#102f52,#b89a5a)}.social-handle{text-align:center;margin-top:25px;color:var(--gold2);letter-spacing:2px;font-size:12px}
-footer{background:#061a2e;color:#fff;padding:45px 0;text-align:center}.footer-brand{font:500 32px "Cormorant Garamond",serif;letter-spacing:2px;color:var(--gold2)}footer p{font-size:11px;color:#aeb8c3;margin-top:8px}.footer-disclaimer{margin-top:22px;color:#8795a5!important;font-size:10px!important}
-.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,120px);background:var(--navy);color:#fff;padding:14px 22px;border:1px solid var(--gold);font-size:12px;z-index:5000;opacity:0;transition:.35s;max-width:90%;text-align:center}.toast.show{transform:translate(-50%,0);opacity:1}
-@media(max-width:900px){.hero-badge{display:none}.about-grid,.booking-grid{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:repeat(2,1fr)}.team,.quote-grid{grid-template-columns:1fr 1fr}.contact-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:700px){header{min-height:700px}.nav-inner{min-height:60px}.menu-btn{display:block}.nav-links{display:none;position:absolute;left:0;right:0;top:60px;background:#fff;padding:18px 20px;flex-direction:column;align-items:flex-start;border-bottom:1px solid var(--line)}.nav-links.open{display:flex}section{padding:75px 0}.container{width:min(100% - 30px,1160px)}.cards,.features,.team,.quote-grid,.contact-grid,.social-card{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.about-visual{min-height:350px}.booking-info,.booking-form{padding:25px}.brand-name{font-size:40px}.map-wrap iframe{height:300px}}
+
+:root{
+  --navy:#0b2340;
+  --navy2:#102f52;
+  --gold:#b89a5a;
+  --gold2:#d9c28f;
+  --cream:#f8f4ec;
+  --white:#fff;
+  --text:#27384a;
+  --muted:#6e7780;
+  --line:#e5dac6
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box
+}
+
+html{
+  scroll-behavior:smooth
+}
+
+body{
+  background:var(--cream);
+  color:var(--text);
+  font-family:Montserrat,Arial,sans-serif;
+  line-height:1.65
+}
+
+a{
+  text-decoration:none;
+  color:inherit
+}
+
+button,
+input,
+select,
+textarea{
+  font:inherit
+}
+
+.container{
+  width:min(1160px,calc(100% - 40px));
+  margin:auto
+}
+
+header{
+  min-height:760px;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 80% 25%,rgba(217,194,143,.22),transparent 28%),
+    linear-gradient(110deg,var(--navy),#071b31 70%,#102f52);
+  color:#fff
+}
+
+header:before{
+  content:"";
+  position:absolute;
+  width:580px;
+  height:580px;
+  border:1px solid rgba(217,194,143,.22);
+  border-radius:50%;
+  right:-230px;
+  top:-170px
+}
+
+header:after{
+  content:"";
+  position:absolute;
+  width:390px;
+  height:390px;
+  border:1px solid rgba(217,194,143,.15);
+  border-radius:50%;
+  left:-260px;
+  bottom:-250px
+}
+
+.header-content{
+  position:relative;
+  z-index:2;
+  max-width:760px
+}
+
+.eyebrow{
+  color:var(--gold2);
+  letter-spacing:5px;
+  text-transform:uppercase;
+  font-size:11px;
+  margin-bottom:25px
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  margin-bottom:22px
+}
+
+.brand-mark{
+  width:86px;
+  height:86px;
+  border:1px solid var(--gold2);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  color:var(--gold2);
+  font:500 45px "Cormorant Garamond",serif;
+  position:relative
+}
+
+.brand-mark:after{
+  content:"";
+  position:absolute;
+  width:65px;
+  height:25px;
+  border-top:1px solid var(--gold2);
+  border-radius:50%;
+  transform:rotate(-25deg)
+}
+
+.brand-name{
+  font:500 clamp(38px,6vw,72px)/.9 "Cormorant Garamond",serif;
+  letter-spacing:2px
+}
+
+.brand-name span{
+  color:var(--gold2)
+}
+
+header h1{
+  font:500 clamp(48px,7vw,82px)/.92 "Cormorant Garamond",serif;
+  max-width:780px;
+  margin-bottom:25px
+}
+
+header h1 span{
+  color:var(--gold2)
+}
+
+.hero-copy{
+  max-width:650px;
+  color:#d5dde5;
+  font-size:16px
+}
+
+.hero-actions{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:34px
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:52px;
+  padding:0 28px;
+  border:1px solid var(--gold);
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  font-size:11px;
+  transition:.25s
+}
+
+.btn-primary{
+  background:var(--gold);
+  color:#fff
+}
+
+.btn-primary:hover{
+  background:#c7aa69;
+  transform:translateY(-2px)
+}
+
+.btn-outline{
+  color:#fff;
+  border-color:rgba(217,194,143,.7)
+}
+
+.btn-outline:hover{
+  background:rgba(217,194,143,.12)
+}
+
+.hero-badge{
+  position:absolute;
+  right:8%;
+  top:50%;
+  transform:translateY(-50%);
+  width:250px;
+  height:250px;
+  border:1px solid rgba(217,194,143,.45);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  color:var(--gold2);
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase
+}
+
+.hero-badge:before{
+  content:"✦";
+  font-size:28px;
+  position:absolute;
+  top:30px
+}
+
+.hero-badge strong{
+  font:500 27px "Cormorant Garamond",serif;
+  letter-spacing:1px
+}
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,255,255,.96);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(12px)
+}
+
+.nav-inner{
+  min-height:68px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px
+}
+
+.nav-logo{
+  font:500 25px "Cormorant Garamond",serif;
+  color:var(--navy);
+  letter-spacing:2px
+}
+
+.nav-logo span{
+  color:var(--gold)
+}
+
+.nav-links{
+  display:flex;
+  gap:25px;
+  align-items:center
+}
+
+.nav-links a{
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1.1px;
+  color:var(--navy);
+  position:relative
+}
+
+.nav-links a:after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:-8px;
+  width:0;
+  height:1px;
+  background:var(--gold);
+  transform:translateX(-50%);
+  transition:.25s
+}
+
+.nav-links a:hover:after{
+  width:100%
+}
+
+.menu-btn{
+  display:none;
+  background:none;
+  border:0;
+  color:var(--navy);
+  font-size:24px
+}
+
+section{
+  padding:105px 0
+}
+
+.section-head{
+  text-align:center;
+  max-width:720px;
+  margin:0 auto 52px
+}
+
+.section-kicker{
+  color:var(--gold);
+  font-size:11px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  margin-bottom:12px
+}
+
+.section-head h2{
+  color:var(--navy);
+  font:500 clamp(38px,5vw,57px)/1 "Cormorant Garamond",serif;
+  margin-bottom:17px
+}
+
+.section-head p{
+  color:var(--muted);
+  font-size:14px
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:65px;
+  align-items:center
+}
+
+.about-visual{
+  min-height:480px;
+  position:relative;
+  background:
+    radial-gradient(circle at 30% 25%,rgba(217,194,143,.55),transparent 23%),
+    linear-gradient(145deg,#eee6d7,#fbf8f1);
+  border:1px solid var(--line);
+  overflow:hidden
+}
+
+.about-visual:before{
+  content:"BELLA VITA";
+  position:absolute;
+  left:35px;
+  bottom:28px;
+  color:rgba(11,35,64,.12);
+  font:600 65px "Cormorant Garamond",serif;
+  letter-spacing:4px;
+  transform:rotate(-90deg);
+  transform-origin:left bottom
+}
+
+.about-ornament{
+  position:absolute;
+  inset:45px;
+  border:1px solid rgba(184,154,90,.6)
+}
+
+.about-ornament:before,
+.about-ornament:after{
+  content:"";
+  position:absolute;
+  border:1px solid rgba(184,154,90,.4);
+  border-radius:50%
+}
+
+.about-ornament:before{
+  width:260px;
+  height:260px;
+  right:-110px;
+  top:-100px
+}
+
+.about-ornament:after{
+  width:220px;
+  height:220px;
+  left:-100px;
+  bottom:-110px
+}
+
+.about-copy h3{
+  font:500 42px/1.05 "Cormorant Garamond",serif;
+  color:var(--navy);
+  margin-bottom:20px
+}
+
+.about-copy p{
+  color:var(--muted);
+  font-size:14px;
+  margin-bottom:17px
+}
+
+.signature{
+  color:var(--gold);
+  font:italic 32px "Cormorant Garamond",serif;
+  margin-top:22px
+}
+
+#procedimentos{
+  background:#fff
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px
+}
+
+.card{
+  background:var(--cream);
+  border:1px solid var(--line);
+  padding:33px;
+  min-height:235px;
+  position:relative;
+  transition:.3s
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 35px rgba(11,35,64,.09)
+}
+
+.card-number{
+  color:var(--gold);
+  font:500 15px "Cormorant Garamond",serif;
+  margin-bottom:22px
+}
+
+.card h3{
+  font:500 28px "Cormorant Garamond",serif;
+  color:var(--navy);
+  margin-bottom:9px
+}
+
+.card p{
+  font-size:13px;
+  color:var(--muted)
+}
+
+.card-line{
+  position:absolute;
+  left:33px;
+  top:0;
+  width:42px;
+  height:2px;
+  background:var(--gold)
+}
+
+.dark-section{
+  background:var(--navy);
+  color:#fff
+}
+
+.dark-section .section-kicker{
+  color:var(--gold2)
+}
+
+.dark-section .section-head h2{
+  color:#fff
+}
+
+.dark-section .section-head p{
+  color:#bfc9d4
+}
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px
+}
+
+.feature{
+  text-align:center;
+  padding:32px 20px;
+  border:1px solid rgba(217,194,143,.22)
+}
+
+.feature-icon{
+  font-size:28px;
+  color:var(--gold2);
+  margin-bottom:15px
+}
+
+.feature h3{
+  font:500 24px "Cormorant Garamond",serif;
+  margin-bottom:8px
+}
+
+.feature p{
+  font-size:12px;
+  color:#bfc9d4
+}
+
+.team{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px
+}
+
+.person{
+  background:#fff;
+  border:1px solid var(--line);
+  padding:18px
+}
+
+.person-photo{
+  height:290px;
+  background:
+    radial-gradient(circle at 50% 35%,rgba(217,194,143,.5),transparent 18%),
+    linear-gradient(145deg,#e9e0d0,#f9f6ef);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:rgba(11,35,64,.3);
+  font:500 72px "Cormorant Garamond",serif
+}
+
+.person-info{
+  padding:20px 4px 5px
+}
+
+.person-info h3{
+  font:500 29px "Cormorant Garamond",serif;
+  color:var(--navy)
+}
+
+.person-info span{
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase
+}
+
+.testimonials{
+  background:#f1ece2
+}
+
+.quote-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px
+}
+
+.quote{
+  background:#fff;
+  padding:30px;
+  border:1px solid var(--line)
+}
+
+.quote-mark{
+  font:50px "Cormorant Garamond",serif;
+  color:var(--gold)
+}
+
+.quote p{
+  font:italic 17px "Cormorant Garamond",serif;
+  color:var(--text);
+  margin:5px 0 20px
+}
+
+.quote strong{
+  font-size:11px;
+  color:var(--navy);
+  letter-spacing:1px
+}
+
+.booking-grid{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:35px;
+  align-items:start
+}
+
+.booking-info{
+  background:var(--navy);
+  color:#fff;
+  padding:42px
+}
+
+.booking-info h3{
+  font:500 39px/1 "Cormorant Garamond",serif;
+  margin-bottom:15px
+}
+
+.booking-info p{
+  font-size:13px;
+  color:#c9d2dc;
+  margin-bottom:28px
+}
+
+.info-row{
+  border-top:1px solid rgba(217,194,143,.25);
+  padding:16px 0;
+  font-size:12px
+}
+
+.info-row strong{
+  display:block;
+  color:var(--gold2);
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  margin-bottom:4px
+}
+
+.booking-form{
+  background:#fff;
+  border:1px solid var(--line);
+  padding:35px
+}
+
+.booking-form h3{
+  font:500 35px "Cormorant Garamond",serif;
+  color:var(--navy);
+  margin-bottom:5px
+}
+
+.form-note{
+  font-size:11px;
+  color:var(--muted);
+  margin-bottom:22px
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px
+}
+
+.field{
+  margin-bottom:14px
+}
+
+.field.full{
+  grid-column:1/-1
+}
+
+label{
+  display:block;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:var(--navy);
+  margin-bottom:7px
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  border:1px solid #ddd4c5;
+  background:#fffdf8;
+  padding:13px 14px;
+  outline:none;
+  color:var(--text);
+  border-radius:0
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:var(--gold)
+}
+
+textarea{
+  min-height:100px;
+  resize:vertical
+}
+
+.submit{
+  width:100%;
+  border:0;
+  background:var(--navy);
+  color:#fff;
+  padding:15px;
+  cursor:pointer;
+  letter-spacing:1.5px;
+  font-size:11px;
+  transition:.25s
+}
+
+.submit:hover{
+  background:var(--gold)
+}
+
+.submit:disabled{
+  opacity:.65;
+  cursor:not-allowed
+}
+
+.calendar{
+  margin-top:28px;
+  border-top:1px solid var(--line);
+  padding-top:25px
+}
+
+.calendar-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:15px
+}
+
+.calendar-title strong{
+  font:500 25px "Cormorant Garamond",serif;
+  color:var(--navy)
+}
+
+.calendar-title span{
+  font-size:10px;
+  color:var(--muted)
+}
+
+.days{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:6px
+}
+
+.day{
+  border:1px solid var(--line);
+  background:#fffdf8;
+  min-height:42px;
+  display:grid;
+  place-items:center;
+  font-size:11px;
+  cursor:pointer;
+  transition:.2s
+}
+
+.day:hover,
+.day.selected{
+  background:var(--navy);
+  color:#fff;
+  border-color:var(--navy)
+}
+
+.day.disabled{
+  opacity:.3;
+  cursor:not-allowed
+}
+
+.day-name{
+  border:0;
+  background:none;
+  cursor:default;
+  font-weight:600;
+  color:var(--gold)
+}
+
+.day-name:hover{
+  background:none;
+  color:var(--gold)
+}
+
+.times{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:15px
+}
+
+.time{
+  border:1px solid var(--line);
+  background:#fffdf8;
+  padding:8px 12px;
+  cursor:pointer;
+  font-size:11px
+}
+
+.time:hover,
+.time.selected{
+  background:var(--gold);
+  color:#fff;
+  border-color:var(--gold)
+}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px
+}
+
+.contact-item{
+  text-align:center;
+  border:1px solid var(--line);
+  padding:30px 15px;
+  background:#fff
+}
+
+.contact-item b{
+  display:block;
+  color:var(--navy);
+  font:500 23px "Cormorant Garamond",serif;
+  margin-bottom:8px
+}
+
+.contact-item span{
+  font-size:11px;
+  color:var(--muted)
+}
+
+.map-wrap{
+  border:1px solid var(--line);
+  background:#fff;
+  padding:10px;
+  box-shadow:0 12px 30px rgba(11,35,64,.07)
+}
+
+.map-wrap iframe{
+  width:100%;
+  height:390px;
+  border:0;
+  display:block
+}
+
+.map-caption{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  padding:18px 8px 8px;
+  flex-wrap:wrap
+}
+
+.map-caption p{
+  font-size:12px;
+  color:var(--muted)
+}
+
+.map-link{
+  display:inline-flex;
+  border:1px solid var(--gold);
+  color:var(--navy);
+  padding:10px 16px;
+  font-size:10px;
+  letter-spacing:1px;
+  text-transform:uppercase
+}
+
+.map-link:hover{
+  background:var(--gold);
+  color:#fff
+}
+
+.faq{
+  max-width:850px;
+  margin:auto
+}
+
+.faq-item{
+  background:#fff;
+  border:1px solid var(--line);
+  margin-bottom:9px
+}
+
+.faq-q{
+  width:100%;
+  padding:19px 22px;
+  background:none;
+  border:0;
+  text-align:left;
+  color:var(--navy);
+  font:500 22px "Cormorant Garamond",serif;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between
+}
+
+.faq-a{
+  display:none;
+  padding:0 22px 20px;
+  color:var(--muted);
+  font-size:13px
+}
+
+.faq-item.open .faq-a{
+  display:block
+}
+
+.faq-item.open .faq-q span{
+  transform:rotate(45deg)
+}
+
+.instagram{
+  background:var(--navy);
+  color:#fff
+}
+
+.social-card{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px
+}
+
+.social-post{
+  aspect-ratio:1;
+  background:linear-gradient(145deg,#e8ddc9,#b89a5a 45%,#0b2340);
+  display:flex;
+  align-items:end;
+  padding:15px;
+  color:#fff;
+  font:500 19px "Cormorant Garamond",serif
+}
+
+.social-post:nth-child(2){
+  background:linear-gradient(145deg,#0b2340,#d9c28f)
+}
+
+.social-post:nth-child(3){
+  background:linear-gradient(145deg,#f4eee3,#102f52)
+}
+
+.social-post:nth-child(4){
+  background:linear-gradient(145deg,#102f52,#b89a5a)
+}
+
+.social-handle{
+  text-align:center;
+  margin-top:25px;
+  color:var(--gold2);
+  letter-spacing:2px;
+  font-size:12px
+}
+
+footer{
+  background:#061a2e;
+  color:#fff;
+  padding:45px 0;
+  text-align:center
+}
+
+.footer-brand{
+  font:500 32px "Cormorant Garamond",serif;
+  letter-spacing:2px;
+  color:var(--gold2)
+}
+
+footer p{
+  font-size:11px;
+  color:#aeb8c3;
+  margin-top:8px
+}
+
+.footer-disclaimer{
+  margin-top:22px;
+  color:#8795a5!important;
+  font-size:10px!important
+}
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:25px;
+  transform:translate(-50%,120px);
+  background:var(--navy);
+  color:#fff;
+  padding:14px 22px;
+  border:1px solid var(--gold);
+  font-size:12px;
+  z-index:5000;
+  opacity:0;
+  transition:.35s;
+  max-width:90%;
+  text-align:center
+}
+
+.toast.show{
+  transform:translate(-50%,0);
+  opacity:1
+}
+
+@media(max-width:900px){
+
+  .hero-badge{
+    display:none
+  }
+
+  .about-grid,
+  .booking-grid{
+    grid-template-columns:1fr
+  }
+
+  .cards{
+    grid-template-columns:repeat(2,1fr)
+  }
+
+  .features{
+    grid-template-columns:repeat(2,1fr)
+  }
+
+  .team,
+  .quote-grid{
+    grid-template-columns:1fr 1fr
+  }
+
+  .contact-grid{
+    grid-template-columns:repeat(2,1fr)
+  }
+
+}
+
+@media(max-width:700px){
+
+  header{
+    min-height:700px
+  }
+
+  .nav-inner{
+    min-height:60px
+  }
+
+  .menu-btn{
+    display:block
+  }
+
+  .nav-links{
+    display:none;
+    position:absolute;
+    left:0;
+    right:0;
+    top:60px;
+    background:#fff;
+    padding:18px 20px;
+    flex-direction:column;
+    align-items:flex-start;
+    border-bottom:1px solid var(--line)
+  }
+
+  .nav-links.open{
+    display:flex
+  }
+
+  section{
+    padding:75px 0
+  }
+
+  .container{
+    width:min(100% - 30px,1160px)
+  }
+
+  .cards,
+  .features,
+  .team,
+  .quote-grid,
+  .contact-grid,
+  .social-card{
+    grid-template-columns:1fr
+  }
+
+  .form-grid{
+    grid-template-columns:1fr
+  }
+
+  .field.full{
+    grid-column:auto
+  }
+
+  .about-visual{
+    min-height:350px
+  }
+
+  .booking-info,
+  .booking-form{
+    padding:25px
+  }
+
+  .brand-name{
+    font-size:40px
+  }
+
+  .map-wrap iframe{
+    height:300px
+  }
+
+}
 </style>
 </head>
+
 <body>
-<header id="inicio"><div class="container"><div class="header-content">
-<div class="eyebrow">Beleza • Saúde • Bem-estar</div>
-<div class="brand"><div class="brand-mark">B</div><div class="brand-name">BELLA <span>VITA</span></div></div>
-<h1>Realce sua beleza.<br><span>Valorize sua essência.</span></h1>
-<p class="hero-copy">Uma experiência de estética avançada criada para unir sofisticação, acolhimento e cuidado personalizado.</p>
-<div class="hero-actions"><a class="btn btn-primary" href="#agendamento">Agendar avaliação</a><a class="btn btn-outline" href="#procedimentos">Conhecer tratamentos</a></div>
-</div></div><div class="hero-badge"><div><strong>Estética<br>Avançada</strong><br><br>Facial & Corporal</div></div></header>
 
-<nav><div class="container nav-inner"><a class="nav-logo" href="#inicio">BELLA <span>VITA</span></a><button class="menu-btn" id="menuBtn">☰</button><div class="nav-links" id="navLinks">
-<a href="#sobre">Sobre</a><a href="#procedimentos">Tratamentos</a><a href="#diferenciais">Experiência</a><a href="#profissionais">Equipe</a><a href="#agendamento">Agendamento</a><a href="#faq">FAQ</a><a href="#contato">Contato</a><a href="admin.html">Área administrativa</a>
-</div></div></nav>
+<header id="inicio">
 
-<section id="sobre"><div class="container"><div class="about-grid"><div class="about-visual"><div class="about-ornament"></div></div><div class="about-copy">
-<div class="section-kicker">Conheça a Bella Vita</div><h3>Elegância nos detalhes. Cuidado em cada momento.</h3>
-<p>A Clínica Bella Vita é um projeto demonstrativo de uma clínica de estética avançada. Todo o conteúdo desta página é fictício e foi desenvolvido exclusivamente para testes.</p>
-<p>A proposta visual combina azul-marinho, champagne e tons suaves para criar uma atmosfera sofisticada e acolhedora.</p><div class="signature">Bella Vita</div>
-</div></div></div></section>
+  <div class="container">
 
-<section id="procedimentos"><div class="container"><div class="section-head"><div class="section-kicker">Tratamentos</div><h2>Procedimentos pensados para você</h2><p>Conheça alguns dos serviços disponíveis nesta demonstração.</p></div><div class="cards">
-<article class="card"><div class="card-line"></div><div class="card-number">01</div><h3>Botox</h3><p>Procedimento estético voltado à suavização da aparência de linhas de expressão.</p></article>
-<article class="card"><div class="card-line"></div><div class="card-number">02</div><h3>Preenchimento Facial</h3><p>Técnica estética para definição e harmonização de determinados contornos faciais.</p></article>
-<article class="card"><div class="card-line"></div><div class="card-number">03</div><h3>Bioestimuladores</h3><p>Tratamentos voltados à estimulação de colágeno e melhora da aparência da pele.</p></article>
-<article class="card"><div class="card-line"></div><div class="card-number">04</div><h3>Limpeza de Pele</h3><p>Protocolo de higienização e cuidados para revitalização da pele.</p></article>
-<article class="card"><div class="card-line"></div><div class="card-number">05</div><h3>Microagulhamento</h3><p>Procedimento estético utilizado para auxiliar na melhora da textura da pele.</p></article>
-<article class="card"><div class="card-line"></div><div class="card-number">06</div><h3>PEIM</h3><p>Procedimento estético destinado ao tratamento de microvasos aparentes.</p></article>
-</div></div></section>
+    <div class="header-content">
 
-<section class="dark-section" id="diferenciais"><div class="container"><div class="section-head"><div class="section-kicker">Nossa proposta</div><h2>Uma experiência diferenciada</h2><p>Um conceito fictício criado para demonstrar uma presença digital premium.</p></div><div class="features">
-<div class="feature"><div class="feature-icon">✦</div><h3>Personalização</h3><p>Atendimento pensado para cada perfil e objetivo.</p></div>
-<div class="feature"><div class="feature-icon">◇</div><h3>Tecnologia</h3><p>Protocolos modernos e experiência contemporânea.</p></div>
-<div class="feature"><div class="feature-icon">♡</div><h3>Bem-estar</h3><p>Um ambiente criado para transmitir tranquilidade.</p></div>
-<div class="feature"><div class="feature-icon">✧</div><h3>Naturalidade</h3><p>Valorização das características individuais.</p></div>
-</div></div></section>
+      <div class="eyebrow">
+        Beleza • Saúde • Bem-estar
+      </div>
 
-<section id="profissionais"><div class="container"><div class="section-head"><div class="section-kicker">Equipe</div><h2>Profissionais</h2><p>Nomes e perfis abaixo são fictícios e servem apenas para demonstração.</p></div><div class="team">
-<article class="person"><div class="person-photo">AM</div><div class="person-info"><h3>Amanda Martins</h3><span>Biomédica Esteta</span></div></article>
-<article class="person"><div class="person-photo">CR</div><div class="person-info"><h3>Camila Ribeiro</h3><span>Especialista Facial</span></div></article>
-<article class="person"><div class="person-photo">LS</div><div class="person-info"><h3>Larissa Souza</h3><span>Estética Avançada</span></div></article>
-</div></div></section>
+      <div class="brand">
 
-<section class="testimonials"><div class="container"><div class="section-head"><div class="section-kicker">Experiências</div><h2>O que nossas clientes dizem</h2><p>Depoimentos fictícios para apresentação do layout.</p></div><div class="quote-grid">
-<article class="quote"><div class="quote-mark">“</div><p>Ambiente elegante, atendimento acolhedor e uma experiência muito agradável.</p><strong>Mariana — cliente fictícia</strong></article>
-<article class="quote"><div class="quote-mark">“</div><p>Gostei muito da proposta da clínica e da atenção durante todo o atendimento.</p><strong>Fernanda — cliente fictícia</strong></article>
-<article class="quote"><div class="quote-mark">“</div><p>Uma experiência sofisticada e tranquila, exatamente o que eu procurava.</p><strong>Juliana — cliente fictícia</strong></article>
-</div></div></section>
+        <div class="brand-mark">
+          B
+        </div>
 
-<section id="agendamento"><div class="container"><div class="section-head"><div class="section-kicker">Atendimento</div><h2>Agende sua experiência</h2><p>O agendamento abaixo é uma simulação local. Os registros ficam somente neste navegador.</p></div>
-<div class="booking-grid"><aside class="booking-info"><h3>Seu momento começa aqui.</h3><p>Escolha uma data, horário, profissional e procedimento para testar o fluxo.</p>
-<div class="info-row"><strong>Horário fictício</strong>Segunda a sexta · 09h às 19h</div><div class="info-row"><strong>Local fictício</strong>Rua das Flores, 250 · São Paulo/SP</div><div class="info-row"><strong>WhatsApp fictício</strong>(11) 99999-0000</div></aside>
-<div class="booking-form"><h3>Solicitar agendamento</h3><div class="form-note">Nenhum dado é enviado para um servidor.</div>
-<div class="calendar"><div class="calendar-title"><strong id="monthLabel"></strong><span id="selectedDate">Nenhuma data selecionada</span></div><div class="days" id="calendarDays"></div><div class="times" id="times"></div></div>
-<form id="bookingForm" style="margin-top:25px"><div class="form-grid">
-<div class="field"><label for="nome">Nome</label><input id="nome" required placeholder="Nome fictício"></div>
-<div class="field"><label for="telefone">WhatsApp</label><input id="telefone" required placeholder="(11) 00000-0000"></div>
-<div class="field"><label for="profissional">Profissional</label><select id="profissional" required><option value="">Selecione</option><option>Amanda Martins</option><option>Camila Ribeiro</option><option>Larissa Souza</option></select></div>
-<div class="field"><label for="servico">Procedimento</label><select id="servico" required><option value="">Selecione</option><option>Botox</option><option>Preenchimento Facial</option><option>Bioestimuladores</option><option>Limpeza de Pele</option><option>Microagulhamento</option><option>PEIM</option></select></div>
-<div class="field full"><label for="observacoes">Observações</label><textarea id="observacoes" placeholder="Mensagem para a simulação"></textarea></div>
-<div class="field full"><button class="submit" type="submit">CONFIRMAR SIMULAÇÃO</button></div>
-</div></form></div></div></div></section>
+        <div class="brand-name">
+          BELLA <span>VITA</span>
+        </div>
 
-<section id="faq"><div class="container"><div class="section-head"><div class="section-kicker">Dúvidas</div><h2>Perguntas frequentes</h2><p>Conteúdo fictício para demonstração.</p></div><div class="faq">
-<div class="faq-item"><button class="faq-q">Como funciona o agendamento? <span>＋</span></button><div class="faq-a">Você escolhe o procedimento, profissional, data e horário. Nesta versão, tudo é apenas uma simulação no navegador.</div></div>
-<div class="faq-item"><button class="faq-q">Posso alterar um horário? <span>＋</span></button><div class="faq-a">No painel administrativo fictício é possível visualizar e remover os registros criados neste navegador.</div></div>
-<div class="faq-item"><button class="faq-q">Os dados são reais? <span>＋</span></button><div class="faq-a">Não. A aplicação foi criada para testes e usa nomes, contatos e informações fictícias.</div></div>
-<div class="faq-item"><button class="faq-q">A clínica possui atendimento online? <span>＋</span></button><div class="faq-a">Esta informação não representa uma clínica real; o conteúdo existe apenas para demonstrar o site.</div></div>
-</div></div></section>
+      </div>
 
-<section class="instagram" id="instagram"><div class="container"><div class="section-head"><div class="section-kicker">Redes sociais</div><h2 style="color:#fff">Acompanhe a Bella Vita</h2><p style="color:#c3ccd6">Posts ilustrativos — Instagram fictício para demonstração.</p></div><div class="social-card"><div class="social-post">Estética & bem-estar</div><div class="social-post">Detalhes que transformam</div><div class="social-post">Sua melhor versão</div><div class="social-post">Cuidado personalizado</div></div><div class="social-handle">@bellavita.estetica</div></div></section>
+      <h1>
+        Realce sua beleza.<br>
+        <span>Valorize sua essência.</span>
+      </h1>
 
-<section id="contato"><div class="container"><div class="section-head"><div class="section-kicker">Fale conosco</div><h2>Contato</h2><p>Informações abaixo são fictícias.</p></div><div class="contact-grid">
-<div class="contact-item"><b>Endereço</b><span>Rua das Flores, 250<br>São Paulo — SP</span></div><div class="contact-item"><b>Telefone</b><span>(11) 99999-0000</span></div><div class="contact-item"><b>E-mail</b><span>contato@bellavita.example</span></div><div class="contact-item"><b>Atendimento</b><span>Seg. a Sex.<br>09h às 19h</span></div>
-</div></div></section>
+      <p class="hero-copy">
+        Uma experiência de estética avançada criada para unir
+        sofisticação, acolhimento e cuidado personalizado.
+      </p>
 
-<section id="localizacao" style="padding-top:0"><div class="container"><div class="section-head"><div class="section-kicker">Localização</div><h2>Onde estamos</h2><p>Endereço fictício usado exclusivamente para demonstração.</p></div><div class="map-wrap">
-<iframe title="Mapa da Clínica Bella Vita" src="https://www.google.com/maps?q=Rua%20das%20Flores%2C%20250%2C%20S%C3%A3o%20Paulo%2C%20SP&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-<div class="map-caption"><p><strong>Clínica Bella Vita</strong> · Rua das Flores, 250 · São Paulo — SP</p><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Rua%20das%20Flores%2C%20250%2C%20S%C3%A3o%20Paulo%2C%20SP" target="_blank" rel="noopener">Abrir no Google Maps</a></div>
-</div></div></section>
+      <div class="hero-actions">
 
-<footer><div class="container"><div class="footer-brand">BELLA VITA</div><p>Estética Avançada Facial & Corporal</p><p class="footer-disclaimer">PROJETO DEMONSTRATIVO — NOMES, CONTATOS, PROFISSIONAIS E AGENDAMENTOS SÃO FICTÍCIOS.</p><p>© 2026 Clínica Bella Vita</p></div></footer>
-<div class="toast" id="toast"></div>
+        <a
+          class="btn btn-primary"
+          href="#agendamento"
+        >
+          Agendar avaliação
+        </a>
 
-<script>
-const menuBtn=document.getElementById('menuBtn'),navLinks=document.getElementById('navLinks');menuBtn.onclick=()=>navLinks.classList.toggle('open');document.querySelectorAll('.nav-links a').forEach(a=>a.onclick=()=>navLinks.classList.remove('open'));
-const toast=document.getElementById('toast');function showToast(m){toast.textContent=m;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),3800)}
-const calendarDays=document.getElementById('calendarDays'),times=document.getElementById('times'),selectedDate=document.getElementById('selectedDate');const month=8,year=2026;
-const monthNames=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];const timeOptions=['09:00','10:00','11:30','14:00','15:30','17:00','18:00'];let chosenDate='',chosenTime='';
-document.getElementById('monthLabel').textContent=`${monthNames[month]} ${year}`;
-function buildCalendar(){calendarDays.innerHTML='';['D','S','T','Q','Q','S','S'].forEach(d=>{let x=document.createElement('div');x.className='day day-name';x.textContent=d;calendarDays.appendChild(x)});const first=new Date(year,month,1).getDay(),total=new Date(year,month+1,0).getDate();for(let i=0;i<first;i++){let x=document.createElement('div');x.className='day disabled';calendarDays.appendChild(x)}for(let d=1;d<=total;d++){let x=document.createElement('button');x.type='button';x.className='day';x.textContent=d;let date=new Date(year,month,d);if(date.getDay()===0){x.disabled=true;x.classList.add('disabled')}else{x.onclick=()=>selectDate(d,x)}calendarDays.appendChild(x)}}
-function selectDate(day,el){document.querySelectorAll('#calendarDays .day').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');chosenDate=`${String(day).padStart(2,'0')}/${String(month+1).padStart(2,'0')}/${year}`;chosenTime='';selectedDate.textContent=chosenDate;times.innerHTML='';timeOptions.forEach(t=>{let x=document.createElement('button');x.type='button';x.className='time';x.textContent=t;x.onclick=()=>{document.querySelectorAll('.time').forEach(y=>y.classList.remove('selected'));x.classList.add('selected');chosenTime=t;selectedDate.textContent=`${chosenDate} · ${chosenTime}`};times.appendChild(x)})}
-document.getElementById('bookingForm').onsubmit=e=>{e.preventDefault();if(!chosenDate)return showToast('Escolha uma data no calendário.');if(!chosenTime)return showToast('Escolha um horário disponível.');const item={id:'BV-'+Date.now().toString().slice(-6),nome:document.getElementById('nome').value,telefone:document.getElementById('telefone').value,profissional:document.getElementById('profissional').value,servico:document.getElementById('servico').value,data:chosenDate,horario:chosenTime,observacoes:document.getElementById('observacoes').value,status:'Confirmado'};const list=JSON.parse(localStorage.getItem('bellaVitaAgendamentos')||'[]');list.push(item);localStorage.setItem('bellaVitaAgendamentos',JSON.stringify(list));showToast(`Agendamento ${item.id} criado com sucesso. Dados apenas neste navegador.`);e.target.reset();chosenDate='';chosenTime='';selectedDate.textContent='Nenhuma data selecionada';times.innerHTML='';document.querySelectorAll('#calendarDays .day').forEach(x=>x.classList.remove('selected'))};
-document.querySelectorAll('.faq-q').forEach(q=>q.onclick=()=>q.parentElement.classList.toggle('open'));buildCalendar();
-</script>
-</body>
-</html>
+        <a
+          class="btn btn-outline"
+          href="#procedimentos"
+        >
+          Conhecer tratamentos
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="hero-badge">
+
+    <div>
+
+      <strong>
+        Estética<br>
+        Avançada
+      </strong>
+
+      <br><br>
+
+      Facial & Corporal
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<nav>
+
+  <div class="container nav-inner">
+
+    <a
+      class="nav-logo"
+      href="#inicio"
+    >
+      BELLA <span>VITA</span>
+    </a>
+
+    <button
+      class="menu-btn"
+      id="menuBtn"
+      type="button"
+    >
+      ☰
+    </button>
+
+    <div
+      class="nav-links"
+      id="navLinks"
+    >
+
+      <a href="#sobre">
+        Sobre
+      </a>
+
+      <a href="#procedimentos">
+        Tratamentos
+      </a>
+
+      <a href="#diferenciais">
+        Experiência
+      </a>
+
+      <a href="#profissionais">
+        Equipe
+      </a>
+
+      <a href="#agendamento">
+        Agendamento
+      </a>
+
+      <a href="#faq">
+        FAQ
+      </a>
+
+      <a href="#contato">
+        Contato
+      </a>
+
+      <a href="admin.html">
+        Área administrativa
+      </a>
+
+    </div>
+
+  </div>
+
+</nav>
+
+
+<section id="sobre">
+
+  <div class="container">
+
+    <div class="about-grid">
+
+      <div class="about-visual">
+        <div class="about-ornament"></div>
+      </div>
+
+      <div class="about-copy">
+
+        <div class="section-kicker">
+          Conheça a Bella Vita
+        </div>
+
+        <h3>
+          Elegância nos detalhes.
+          Cuidado em cada momento.
+        </h3>
+
+        <p>
+          A Clínica Bella Vita é um projeto demonstrativo
+          de uma clínica de estética avançada.
+          Todo o conteúdo desta página é fictício
+          e foi desenvolvido exclusivamente para testes.
+        </p>
+
+        <p>
+          A proposta visual combina azul-marinho,
+          champagne e tons suaves para criar uma
+          atmosfera sofisticada e acolhedora.
+        </p>
+
+        <div class="signature">
+          Bella Vita
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="procedimentos">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div class="section-kicker">
+        Tratamentos
+      </div>
+
+      <h2>
+        Procedimentos pensados para você
+      </h2>
+
+      <p>
+        Conheça alguns dos serviços disponíveis nesta demonstração.
+      </p>
+
+    </div>
+
+    <div class="cards">
+
+      <article class="card">
+        <div class="card-line"></div>
+        <div class="card-number">01</div>
+        <h3>Botox</h3>
+        <p>
+          Procedimento estético voltado à suavização
+          da aparência de linhas de expressão.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-line"></div>
+        <div class="card-number">02</div>
+        <h3>Preenchimento Facial</h3>
+        <p>
+          Técnica estética para definição e harmonização
+          de determinados contornos faciais.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-line"></div>
+        <div class="card-number">03</div>
+        <h3>Bioestimuladores</h3>
+        <p>
+          Tratamentos voltados à estimulação de colágeno
+          e melhora da aparência da pele.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-line"></div>
+        <div class="card-number">04</div>
+        <h3>Limpeza de Pele</h3>
+        <p>
+          Protocolo de higienização e cuidados
+          para revitalização da pele.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-line"></div>
+        <div class="card-number">05</div>
+        <h3>Microagulhamento</h3>
+        <p>
+          Procedimento estético utilizado para auxiliar
+          na melhora da textura da pele.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-line"></div>
+        <div class="card-number">06</div>
+        <h3>PEIM</h3>
+        <p>
+          Procedimento estético destinado ao tratamento
+          de microvasos aparentes.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section
+  class="dark-section"
+  id="diferenciais"
+>
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div class="section-kicker">
+        Nossa proposta
+      </div>
+
+      <h2>
+        Uma experiência diferenciada
+      </h2>
+
+      <p>
+        Um conceito fictício criado para demonstrar
+        uma presença digital premium.
+      </p>
+
+    </div>
+
+    <div class="features">
+
+      <div class="feature">
+        <div class="feature-icon">✦</div>
+        <h3>Personalização</h3>
+        <p>
+          Atendimento pensado para cada perfil e objetivo.
+        </p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">◇</div>
+        <h3>Tecnologia</h3>
+        <p>
+          Protocolos modernos e experiência contemporânea.
+        </p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">♡</div>
+        <h3>Bem-estar</h3>
+        <p>
+          Um ambiente criado para transmitir tranquilidade.
+        </p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">✧</div>
+        <h3>Naturalidade</h3>
+        <p>
+          Valorização das características individuais.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="profissionais">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div class="section-kicker">
+        Equipe
+      </div>
+
+      <h2>
+        Profissionais
+      </h2>
+
+      <p>
+        Nomes e perfis abaixo são fictícios e servem
+        apenas para demonstração.
+      </p>
+
+    </div>
+
+    <div class="team">
+
+      <article class="person">
+
+        <div class="person-photo">
+          AM
+        </div>
+
+        <div class="person-info">
+
+          <h3>
+            Amanda Martins
+          </h3>
+
+          <span>
+            Biomédica Esteta
+          </span>
+
+        </div>
+
+      </article>
+
+
+      <article class="person">
+
+        <div class="person-photo">
+          CR
+        </div>
+
+        <div class="person-info">
+
+          <h3>
+            Camila Ribeiro
+          </h3>
+
+          <span>
+            Especialista Facial
+          </span>
+
+        </div>
+
+      </article>
+
+
+      <article class="person">
+
+        <div class="person-photo">
+          LS
+        </div>
+
+        <div class="person-info">
+
+          <h3>
+            Larissa Souza
+          </h3>
+
+          <span>
+            Estética Avançada
+          </span>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="testimonials">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div class="section-kicker">
+        Experiências
+      </div>
+
+      <h2>
+        O que nossas clientes dizem
+      </h2>
+
+      <p>
+        Depoimentos fictícios para apresentação do layout.
+      </p>
+
+    </div>
+
+    <div class="quote-grid">
+
+      <article class="quote">
+
+        <div class="quote-mark">
+          “
+        </div>
+
+        <p>
+          Ambiente elegante, atendimento acolhedor
+          e uma experiência muito agradável.
+        </p>
+
+        <strong>
+          Mariana — cliente fictícia
+        </strong>
+
+      </article>
+
+
+      <article class="quote">
+
+        <div class="quote-mark">
+          “
+        </div>
+
+        <p>
+          Gostei muito da proposta da clínica e da
+          atenção durante todo o atendimento.
+        </p>
+
+        <strong>
+          Fernanda — cliente fictícia
+        </strong>
+
+      </article>
+
+
+      <article class="quote">
+
+        <div class="quote-mark">
+          “
+        </div>
+
+        <p>
+          Uma experiência sofisticada e tranquila,
+          exatamente o que eu procurava.
+        </p>
+
+        <strong>
+          Juliana — cliente fictícia
+        </strong>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="agendamento">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div class="section-kicker">
+        Atendimento
+      </div>
+
+      <h2>
+        Agende sua experiência
+      </h2>
+
+      <p>
+        O agendamento é salvo com segurança no banco
+        de dados da demonstração.
+      </p>
+
+    </div>
+
+
+    <div class="booking-grid">
+
+
+      <aside class="booking-info">
+
+        <h3>
+          Seu momento começa aqui.
+        </h3>
+
+        <p>
+          Escolha uma data, horário, profissional
+          e procedimento para testar o fluxo.
+        </p>
+
+        <div class="info-row">
+
+          <strong>
+            Horário fictício
+          </strong>
+
+          Segunda a sexta · 09h às 19h
+
+        </div>
+
+        <div class="info-row">
+
+          <strong>
+            Local fictício
+          </strong>
+
+          Rua das Flores, 250 · São Paulo/SP
+
+        </div>
+
+        <div class="info-row">
+
+          <strong>
+            WhatsApp fictício
+          </strong>
+
+          (11) 99999-0000
+
+        </div>
+
+      </aside>
+
+
+      <div class="booking-form">
+
+        <h3>
+          Solicitar agendamento
+        </h3>
+
+        <div class="form-note">
+          Os dados serão armazenados no Supabase.
+        </div>
+
+
+        <div class="calendar">
+
+          <div class="calendar-title">
+
+            <strong id="monthLabel"></strong>
+
+            <span id="selectedDate">
+              Nenhuma data selecionada
+            </span>
+
+          </div>
+
+          <div
+            class="days"
+            id="calendarDays"
+          ></div>
+
+          <div
+            class="times"
+            id="times"
+          ></div>
+
+        </div>
+
+
+        <form
+          id="bookingForm"
+          style="margin-top:25px"
+        >
+
+          <div class="form-grid">
+
+
+            <div class="field">
+
+              <label for="nome">
+                Nome
+              </label>
+
+              <input
+                id="nome"
+                required
+                placeholder="Nome fictício"
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label for="telefone">
+                WhatsApp
+              </label>
+
+              <input
+                id="telefone"
+                required
+                placeholder="(11) 00000-0000"
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label for="profissional">
+                Profissional
+              </label>
+
+              <select
+                id="profissional"
+                required
+              >
+
+                <option value="">
+                  Selecione
+                </option>
+
+                <option>
+                  Amanda Martins
+                </option>
+
+                <option>
+                  Camila Ribeiro
+                </option>
+
+                <option>
+                  Larissa Souza
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="field">
+
+              <label for="servico">
+                Procedimento
+              </label>
+
+              <select
+                id="servico"
+                required
+              >
+
+                <option value="">
+                  Selecione
+                </option>
+
+                <option>
+                  Botox
+                </option>
+
+                <option>
+                  Preenchimento Facial
+                </option>
+
+                <option>
+                  Bioestimuladores
+                </option>
+
+                <option>
+                  Limpeza de Pele
+                </option>
+
+                <option>
+                  Microagulhamento
+                </option>
+
+                <option>
+                  PEIM
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="field full">
+
+              <label for="observacoes">
+                Observações
+              </label>
+
+              <textarea
+                id="observacoes"
+                placeholder="Mensagem para a simulação"
+              ></textarea>
+
+            </div>
+
+
+            <div class="field full">
+
+              <button
+                class="submit"
+                type="submit"
+              >
+                CONFIRMAR SIMULAÇÃO
+              </button>
+
+            </div>
+
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="faq">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div class="section-kicker">
+        Dúvidas
+      </div>
+
+      <h2>
+        Perguntas frequentes
+      </h2>
+
+      <p>
+        Conteúdo fictício para demonstração.
+      </p>
+
+    </div>
+
+
+    <div class="faq">
+
+
+      <div class="faq-item">
+
+        <button class="faq-q">
+          Como funciona o agendamento?
+          <span>＋</span>
+        </button>
+
+        <div class="faq-a">
+          Você escolhe o procedimento, profissional,
+          data e horário. Os dados são armazenados
+          no banco de dados da demonstração.
+        </div>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <button class="faq-q">
+          Posso alterar um horário?
+          <span>＋</span>
+        </button>
+
+        <div class="faq-a">
+          No painel administrativo é possível visualizar
+          e remover os registros criados.
+        </div>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <button class="faq-q">
+          Os dados são reais?
+          <span>＋</span>
+        </button>
+
+        <div class="faq-a">
+          Não. A aplicação foi criada para testes e usa
+          nomes, contatos e informações fictícias.
+        </div>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <button class="faq-q">
+          A clínica possui atendimento online?
+          <span>＋</span>
+        </button>
+
+        <div class="faq-a">
+          Esta informação não representa uma clínica real;
+          o conteúdo existe apenas para demonstrar o site.
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section
+  class="instagram"
+  id="instagram"
+>
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div class="section-kicker">
+        Redes sociais
+      </div>
+
+      <h2 style="color:#fff">
+        Acompanhe a Bella Vita
+      </h2>
+
+      <p style="color:#c3ccd6">
+        Posts ilustrativos — Instagram fictício para demonstração.
+      </p>
+
+    </div>
+
+
+    <div class="social-card">
+
+      <div class="social-post">
+        Estética & bem-estar
+      </div>
+
+      <div class="social-post">
+        Detalhes que transformam
+      </div>
+
+      <div class="social-post">
+        Sua melhor versão
+      </div>
+
+      <div class="social-post">
+        Cuidado personalizado
+      </div>
+
+    </div>
+
+
+    <div class="social-handle">
+      @bellavita.estetica
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="contato">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div class="section-kicker">
+        Fale conosco
+      </div>
+
+      <h2>
+        Contato
+      </h2>
+
+      <p>
+        Informações abaixo são fictícias.
+      </p>
+
+    </div>
+
+
+    <div class="contact-grid">
+
+      <div class="contact-item">
+
+        <b>
+          Endereço
+        </b>
+
+        <span>
+          Rua das Flores, 250<br>
+          São Paulo — SP
+        </span>
+
+      </div>
+
+
+      <div class="contact-item">
+
+        <b>
+          Telefone
+        </b>
+
+        <span>
+          (11) 99999-0000
+        </span>
+
+      </div>
+
+
+      <div class="contact-item">
+
+        <b>
+          E-mail
+        </b>
+
+        <span>
+          contato@bellavita.example
+        </span>
+
+      </div>
+
+
+      <div class="contact-item">
+
+        <b>
+          Atendimento
+        </b>
+
+        <span>
+          Seg. a Sex.<br>
+          09h às 19h
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section
+  id="localizacao"
+  style="padding-top:0"
+>
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div class="section
