@@ -1,0 +1,1990 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Bella Vita | Administração</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap');
+
+:root{
+  --n:#0b2340;
+  --g:#b89a5a;
+  --g2:#d9c28f;
+  --c:#f8f4ec;
+  --m:#71808e;
+  --l:#e3d8c5;
+  --ok:#527a61;
+  --r:#9b5555
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0
+}
+
+body{
+  font-family:Montserrat,Arial;
+  background:var(--c);
+  color:#26384a
+}
+
+/* LOGIN */
+
+.login{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  background:linear-gradient(135deg,var(--n),#071b31)
+}
+
+.login-card{
+  width:min(430px,100%);
+  background:#fff;
+  padding:42px;
+  text-align:center
+}
+
+.mark{
+  width:70px;
+  height:70px;
+  border:1px solid var(--g);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  margin:auto;
+  color:var(--g);
+  font:45px 'Cormorant Garamond'
+}
+
+.login h1,
+.top h1{
+  font:500 43px 'Cormorant Garamond';
+  color:var(--n)
+}
+
+.login h1{
+  margin:15px
+}
+
+.login p{
+  font-size:10px;
+  color:var(--m);
+  margin-bottom:22px
+}
+
+.field{
+  text-align:left;
+  margin:12px 0
+}
+
+.field label{
+  display:block;
+  font-size:10px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:var(--n);
+  margin-bottom:6px
+}
+
+.field input{
+  width:100%;
+  padding:13px;
+  border:1px solid var(--l);
+  outline:none;
+  font-family:Montserrat
+}
+
+.field input:focus{
+  border-color:var(--g)
+}
+
+.btn{
+  width:100%;
+  padding:14px;
+  background:var(--n);
+  color:#fff;
+  border:0;
+  cursor:pointer;
+  margin-top:10px;
+  font-family:Montserrat
+}
+
+.btn:disabled{
+  opacity:.6;
+  cursor:not-allowed
+}
+
+.hint{
+  color:var(--g)!important;
+  margin-top:18px
+}
+
+.error{
+  color:var(--r);
+  font-size:11px;
+  margin-top:10px;
+  min-height:14px
+}
+
+/* APP */
+
+.app{
+  display:none;
+  min-height:100vh
+}
+
+.sidebar{
+  width:245px;
+  background:var(--n);
+  color:#fff;
+  position:fixed;
+  inset:0 auto 0 0;
+  padding:28px 20px
+}
+
+.logo{
+  text-align:center;
+  color:var(--g2);
+  font:500 30px 'Cormorant Garamond';
+  margin-bottom:35px
+}
+
+.logo small{
+  display:block;
+  font:9px Montserrat;
+  letter-spacing:2px;
+  color:#aeb9c4
+}
+
+.side-link{
+  display:block;
+  padding:12px 14px;
+  color:#d4dce4;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  text-decoration:none
+}
+
+.side-link:hover,
+.side-link.active{
+  background:#ffffff14;
+  color:var(--g2)
+}
+
+.main{
+  margin-left:245px;
+  padding:30px
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px
+}
+
+.logout,
+.clear,
+.nav,
+.action-btn{
+  border:1px solid var(--l);
+  background:#fff;
+  cursor:pointer
+}
+
+.logout,
+.clear{
+  padding:9px 14px;
+  font-size:10px
+}
+
+.clear:disabled{
+  opacity:.5;
+  cursor:not-allowed
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-bottom:22px
+}
+
+.stat,
+.panel,
+.calendar,
+.day-panel{
+  background:#fff;
+  border:1px solid var(--l)
+}
+
+.stat{
+  padding:22px
+}
+
+.stat span{
+  display:block;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:var(--m)
+}
+
+.stat strong{
+  display:block;
+  font:500 38px 'Cormorant Garamond';
+  color:var(--n);
+  margin-top:6px
+}
+
+.panel{
+  padding:24px;
+  margin-bottom:20px
+}
+
+.panel-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px
+}
+
+.panel h2{
+  font:500 30px 'Cormorant Garamond';
+  color:var(--n)
+}
+
+.note{
+  font-size:10px;
+  color:var(--m)
+}
+
+.agenda-grid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:20px
+}
+
+.calendar,
+.day-panel{
+  padding:18px
+}
+
+.cal-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:18px;
+  color:var(--n);
+  font-size:18px
+}
+
+.nav{
+  width:34px;
+  height:34px;
+  font-size:22px;
+  color:var(--n)
+}
+
+.week,
+.days{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:6px
+}
+
+.week span{
+  text-align:center;
+  font-size:8px;
+  letter-spacing:1px;
+  color:var(--g);
+  padding-bottom:7px
+}
+
+.day{
+  min-height:40px;
+  border:1px solid #eee6da;
+  background:#fff;
+  cursor:pointer;
+  font-size:11px;
+  color:var(--n);
+  position:relative
+}
+
+.day.muted{
+  color:#bdc4ca;
+  background:#faf9f6
+}
+
+.day.today{
+  font-weight:700;
+  border-color:var(--g)
+}
+
+.day.selected{
+  background:var(--n);
+  color:#fff;
+  border-color:var(--n)
+}
+
+.dot{
+  position:absolute;
+  bottom:5px;
+  left:50%;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:var(--g);
+  transform:translateX(-50%)
+}
+
+.selected-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  border-bottom:1px solid #eee6da;
+  padding-bottom:14px;
+  margin-bottom:14px
+}
+
+.eyebrow{
+  font-size:8px;
+  letter-spacing:1.4px;
+  color:var(--g);
+  display:block;
+  margin-bottom:5px
+}
+
+.selected-head h3{
+  font:500 27px 'Cormorant Garamond';
+  color:var(--n)
+}
+
+.badge{
+  font-size:9px;
+  color:var(--n);
+  background:#f3eee5;
+  padding:7px 9px
+}
+
+.slot{
+  border:1px solid var(--l);
+  padding:12px;
+  margin-bottom:9px;
+  display:grid;
+  grid-template-columns:65px 1fr auto;
+  gap:10px;
+  align-items:center
+}
+
+.slot-time{
+  font-weight:600;
+  color:var(--n);
+  font-size:12px
+}
+
+.slot-info strong{
+  display:block;
+  font-size:11px;
+  color:var(--n)
+}
+
+.slot-info span{
+  display:block;
+  font-size:9px;
+  color:var(--m);
+  margin-top:3px
+}
+
+.slot-status,
+.status{
+  font-size:8px;
+  padding:5px 7px;
+  background:#e9f0eb;
+  color:var(--ok)
+}
+
+.no-slots,
+.empty,
+.loading{
+  text-align:center;
+  padding:30px;
+  color:var(--m);
+  font-size:11px
+}
+
+.table-wrap{
+  overflow:auto;
+  margin-top:22px
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:850px
+}
+
+th,
+td{
+  text-align:left;
+  padding:12px 9px;
+  border-bottom:1px solid #eee6da;
+  font-size:11px
+}
+
+th{
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:var(--g)
+}
+
+.action-btn{
+  color:var(--r);
+  padding:5px 7px;
+  font-size:8px
+}
+
+.action-btn:disabled{
+  opacity:.5;
+  cursor:not-allowed
+}
+
+.db-error{
+  display:none;
+  background:#f8e9e9;
+  border:1px solid #e4c1c1;
+  color:var(--r);
+  padding:12px;
+  margin-bottom:18px;
+  font-size:10px;
+  line-height:1.5
+}
+
+@media(max-width:900px){
+
+  .sidebar{
+    position:static;
+    width:auto;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    overflow:auto;
+    padding:10px
+  }
+
+  .logo{
+    margin:0 12px;
+    white-space:nowrap
+  }
+
+  .logo small{
+    display:none
+  }
+
+  .side-link{
+    white-space:nowrap
+  }
+
+  .main{
+    margin:0;
+    padding:20px
+  }
+
+  .stats{
+    grid-template-columns:repeat(2,1fr)
+  }
+
+  .agenda-grid{
+    grid-template-columns:1fr
+  }
+}
+
+@media(max-width:500px){
+
+  .stats{
+    grid-template-columns:1fr
+  }
+
+  .top h1{
+    font-size:34px
+  }
+
+  .slot{
+    grid-template-columns:55px 1fr
+  }
+
+  .slot-status{
+    display:none
+  }
+
+  .panel-head{
+    align-items:flex-start;
+    gap:12px
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+
+<div class="login" id="login">
+
+  <div class="login-card">
+
+    <div class="mark">B</div>
+
+    <h1>Bella Vita</h1>
+
+    <p>
+      PAINEL ADMINISTRATIVO · ACESSO RESTRITO
+    </p>
+
+    <form id="loginForm">
+
+      <div class="field">
+
+        <label>E-mail</label>
+
+        <input
+          id="user"
+          type="email"
+          placeholder="seu@email.com"
+          autocomplete="email"
+          required
+        >
+
+      </div>
+
+      <div class="field">
+
+        <label>Senha</label>
+
+        <input
+          id="pass"
+          type="password"
+          placeholder="Sua senha"
+          autocomplete="current-password"
+          required
+        >
+
+      </div>
+
+      <button
+        class="btn"
+        id="loginButton"
+        type="submit"
+      >
+        ENTRAR
+      </button>
+
+      <div
+        class="error"
+        id="error"
+      ></div>
+
+    </form>
+
+    <p class="hint">
+      Acesso restrito
+    </p>
+
+  </div>
+
+</div>
+
+
+<!-- APP -->
+
+<div class="app" id="app">
+
+  <aside class="sidebar">
+
+    <div class="logo">
+
+      BELLA VITA
+
+      <small>
+        ADMINISTRAÇÃO
+      </small>
+
+    </div>
+
+    <a
+      class="side-link active"
+      href="#dashboard"
+    >
+      Dashboard
+    </a>
+
+    <a
+      class="side-link"
+      href="#agenda"
+    >
+      Agendamentos
+    </a>
+
+    <a
+      class="side-link"
+      href="index.html"
+    >
+      Voltar ao site
+    </a>
+
+  </aside>
+
+
+  <main class="main">
+
+    <div class="top">
+
+      <h1>Dashboard</h1>
+
+      <button
+        class="logout"
+        id="logout"
+      >
+        SAIR
+      </button>
+
+    </div>
+
+
+    <div
+      class="db-error"
+      id="dbError"
+    ></div>
+
+
+    <div class="stats">
+
+      <div class="stat">
+
+        <span>
+          Agendamentos
+        </span>
+
+        <strong id="total">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="stat">
+
+        <span>
+          Hoje
+        </span>
+
+        <strong id="today">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="stat">
+
+        <span>
+          Confirmados
+        </span>
+
+        <strong id="confirmed">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="stat">
+
+        <span>
+          Profissionais
+        </span>
+
+        <strong>
+          3
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <section
+      class="panel"
+      id="agenda"
+    >
+
+      <div class="panel-head">
+
+        <div>
+
+          <h2>
+            Agenda
+          </h2>
+
+          <p class="note">
+            Calendário conectado ao Supabase.
+          </p>
+
+        </div>
+
+        <button
+          class="clear"
+          id="clear"
+        >
+          LIMPAR TESTES
+        </button>
+
+      </div>
+
+
+      <div class="agenda-grid">
+
+
+        <div class="calendar">
+
+          <div class="cal-head">
+
+            <button
+              class="nav"
+              id="prev"
+            >
+              ‹
+            </button>
+
+            <strong id="monthLabel"></strong>
+
+            <button
+              class="nav"
+              id="next"
+            >
+              ›
+            </button>
+
+          </div>
+
+
+          <div class="week">
+
+            <span>DOM</span>
+            <span>SEG</span>
+            <span>TER</span>
+            <span>QUA</span>
+            <span>QUI</span>
+            <span>SEX</span>
+            <span>SÁB</span>
+
+          </div>
+
+
+          <div
+            class="days"
+            id="days"
+          ></div>
+
+        </div>
+
+
+        <div class="day-panel">
+
+          <div class="selected-head">
+
+            <div>
+
+              <span class="eyebrow">
+                DIA SELECIONADO
+              </span>
+
+              <h3 id="selectedDate"></h3>
+
+            </div>
+
+            <span
+              class="badge"
+              id="dayCount"
+            >
+              0 horários
+            </span>
+
+          </div>
+
+          <div id="slots">
+
+            <div class="loading">
+              Carregando...
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>
+                Protocolo
+              </th>
+
+              <th>
+                Cliente
+              </th>
+
+              <th>
+                Procedimento
+              </th>
+
+              <th>
+                Profissional
+              </th>
+
+              <th>
+                Data
+              </th>
+
+              <th>
+                Horário
+              </th>
+
+              <th>
+                Status
+              </th>
+
+              <th>
+                Ação
+              </th>
+
+            </tr>
+
+          </thead>
+
+          <tbody id="rows"></tbody>
+
+        </table>
+
+        <div
+          class="empty"
+          id="empty"
+        >
+          Nenhum agendamento encontrado.
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+
+<!-- SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+/* =========================================================
+   CONFIGURAÇÃO SUPABASE
+========================================================= */
+
+const SUPABASE_URL =
+  'https://yvygjvslmshijweyxoen.supabase.co';
+
+const SUPABASE_KEY =
+  'sb_publishable_H4IrYN-FrGxcxRnS8rO4pw_2SbtBt7P';
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+
+/* =========================================================
+   ELEMENTOS
+========================================================= */
+
+const login =
+  document.getElementById('login');
+
+const app =
+  document.getElementById('app');
+
+const error =
+  document.getElementById('error');
+
+const dbError =
+  document.getElementById('dbError');
+
+const loginButton =
+  document.getElementById('loginButton');
+
+const rows =
+  document.getElementById('rows');
+
+const empty =
+  document.getElementById('empty');
+
+const clearButton =
+  document.getElementById('clear');
+
+
+/* =========================================================
+   ESTADO
+========================================================= */
+
+let viewDate = new Date();
+
+let selectedKey = null;
+
+let agendamentos = [];
+
+
+/* =========================================================
+   UTILITÁRIOS
+========================================================= */
+
+function esc(value){
+
+  return String(value ?? '')
+    .replace(/[&<>"']/g, function(m){
+
+      return {
+        '&':'&amp;',
+        '<':'&lt;',
+        '>':'&gt;',
+        '"':'&quot;',
+        "'":'&#039;'
+      }[m];
+
+    });
+
+}
+
+
+function dateKey(value){
+
+  if(!value) return '';
+
+  const s = String(value);
+
+  if(/^\d{4}-\d{2}-\d{2}$/.test(s)){
+    return s;
+  }
+
+  const d = new Date(s);
+
+  if(isNaN(d.getTime())) return '';
+
+  return [
+    d.getFullYear(),
+    String(d.getMonth()+1).padStart(2,'0'),
+    String(d.getDate()).padStart(2,'0')
+  ].join('-');
+
+}
+
+
+function dateFromKey(key){
+
+  const parts =
+    String(key).split('-').map(Number);
+
+  if(parts.length !== 3){
+    return new Date();
+  }
+
+  return new Date(
+    parts[0],
+    parts[1]-1,
+    parts[2]
+  );
+
+}
+
+
+function keyFromDate(d){
+
+  return [
+    d.getFullYear(),
+    String(d.getMonth()+1).padStart(2,'0'),
+    String(d.getDate()).padStart(2,'0')
+  ].join('-');
+
+}
+
+
+function todayKey(){
+
+  return keyFromDate(
+    new Date()
+  );
+
+}
+
+
+function formatDateBR(value){
+
+  const key =
+    dateKey(value);
+
+  if(!key) return '';
+
+  const d =
+    dateFromKey(key);
+
+  return (
+    String(d.getDate()).padStart(2,'0')
+    + '/'
+    + String(d.getMonth()+1).padStart(2,'0')
+    + '/'
+    + d.getFullYear()
+  );
+
+}
+
+
+function formatTime(value){
+
+  if(!value) return '';
+
+  return String(value)
+    .substring(0,5);
+
+}
+
+
+/* =========================================================
+   ERROS
+========================================================= */
+
+function mostrarErro(message){
+
+  dbError.textContent =
+    message;
+
+  dbError.style.display =
+    'block';
+
+}
+
+
+function esconderErro(){
+
+  dbError.textContent = '';
+
+  dbError.style.display =
+    'none';
+
+}
+
+
+/* =========================================================
+   CARREGAR AGENDAMENTOS
+========================================================= */
+
+async function carregarAgendamentos(){
+
+  esconderErro();
+
+  const {
+    data,
+    error: supabaseError
+  } = await supabaseClient
+    .from('agendamentos')
+    .select('*')
+    .order('data', {
+      ascending:true
+    })
+    .order('horario', {
+      ascending:true
+    });
+
+
+  if(supabaseError){
+
+    mostrarErro(
+      'Erro ao carregar agendamentos: '
+      + supabaseError.message
+    );
+
+    agendamentos = [];
+
+    render();
+
+    return;
+
+  }
+
+
+  agendamentos =
+    data || [];
+
+  render();
+
+}
+
+
+/* =========================================================
+   CALENDÁRIO
+========================================================= */
+
+function renderCalendar(){
+
+  const days =
+    document.getElementById('days');
+
+  const first =
+    new Date(
+      viewDate.getFullYear(),
+      viewDate.getMonth(),
+      1
+    );
+
+  const start =
+    new Date(first);
+
+  start.setDate(
+    1 - first.getDay()
+  );
+
+
+  document.getElementById('monthLabel')
+    .textContent =
+      viewDate
+        .toLocaleDateString(
+          'pt-BR',
+          {
+            month:'long',
+            year:'numeric'
+          }
+        )
+        .replace(
+          /^./,
+          c => c.toUpperCase()
+        );
+
+
+  days.innerHTML = '';
+
+
+  for(let i=0;i<42;i++){
+
+    const d =
+      new Date(start);
+
+    d.setDate(
+      start.getDate() + i
+    );
+
+
+    const currentKey =
+      keyFromDate(d);
+
+
+    const button =
+      document.createElement('button');
+
+
+    button.className =
+      'day'
+      + (
+        d.getMonth()
+        !== viewDate.getMonth()
+          ? ' muted'
+          : ''
+      )
+      + (
+        currentKey === todayKey()
+          ? ' today'
+          : ''
+      )
+      + (
+        currentKey === selectedKey
+          ? ' selected'
+          : ''
+      );
+
+
+    const hasAppointments =
+      agendamentos.some(
+        item =>
+          dateKey(item.data)
+          === currentKey
+      );
+
+
+    button.innerHTML =
+      d.getDate()
+      + (
+        hasAppointments
+          ? '<span class="dot"></span>'
+          : ''
+      );
+
+
+    button.onclick =
+      function(){
+
+        selectedKey =
+          currentKey;
+
+        viewDate =
+          new Date(d);
+
+        renderCalendar();
+
+        renderSelected();
+
+      };
+
+
+    days.appendChild(
+      button
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   DIA SELECIONADO
+========================================================= */
+
+function renderSelected(){
+
+  if(!selectedKey){
+
+    selectedKey =
+      todayKey();
+
+  }
+
+
+  const d =
+    dateFromKey(
+      selectedKey
+    );
+
+
+  const data =
+    agendamentos
+      .filter(
+        item =>
+          dateKey(item.data)
+          === selectedKey
+      )
+      .sort(
+        (a,b) =>
+          String(a.horario || '')
+            .localeCompare(
+              String(b.horario || '')
+            )
+      );
+
+
+  document.getElementById(
+    'selectedDate'
+  ).textContent =
+    d.toLocaleDateString(
+      'pt-BR',
+      {
+        weekday:'long',
+        day:'2-digit',
+        month:'long',
+        year:'numeric'
+      }
+    ).replace(
+      /^./,
+      c => c.toUpperCase()
+    );
+
+
+  document.getElementById(
+    'dayCount'
+  ).textContent =
+    data.length
+    + ' '
+    + (
+      data.length === 1
+        ? 'horário'
+        : 'horários'
+    );
+
+
+  const slots =
+    document.getElementById(
+      'slots'
+    );
+
+
+  if(!data.length){
+
+    slots.innerHTML =
+      '<div class="no-slots">'
+      + 'Nenhum agendamento para este dia.'
+      + '</div>';
+
+    return;
+
+  }
+
+
+  slots.innerHTML =
+    data.map(
+      item => `
+
+        <div class="slot">
+
+          <div class="slot-time">
+            ${esc(
+              formatTime(
+                item.horario
+              )
+            )}
+          </div>
+
+          <div class="slot-info">
+
+            <strong>
+              ${esc(item.nome)}
+            </strong>
+
+            <span>
+              ${esc(item.servico)}
+              ·
+              ${esc(item.profissional)}
+            </span>
+
+          </div>
+
+          <span class="slot-status">
+            ${esc(item.status)}
+          </span>
+
+        </div>
+
+      `
+    ).join('');
+
+}
+
+
+/* =========================================================
+   RENDER PRINCIPAL
+========================================================= */
+
+function render(){
+
+  const data =
+    agendamentos;
+
+
+  document.getElementById(
+    'total'
+  ).textContent =
+    data.length;
+
+
+  document.getElementById(
+    'today'
+  ).textContent =
+    data.filter(
+      item =>
+        dateKey(item.data)
+        === todayKey()
+    ).length;
+
+
+  document.getElementById(
+    'confirmed'
+  ).textContent =
+    data.filter(
+      item =>
+        String(
+          item.status || ''
+        ).toLowerCase()
+        === 'confirmado'
+    ).length;
+
+
+  rows.innerHTML = '';
+
+
+  empty.style.display =
+    data.length
+      ? 'none'
+      : 'block';
+
+
+  data
+    .slice()
+    .sort(
+      (a,b) =>
+        String(
+          b.created_at || ''
+        ).localeCompare(
+          String(
+            a.created_at || ''
+          )
+        )
+    )
+    .forEach(
+      item => {
+
+        const tr =
+          document.createElement(
+            'tr'
+          );
+
+
+        tr.innerHTML = `
+
+          <td>
+            ${esc(item.id)}
+          </td>
+
+          <td>
+            <strong>
+              ${esc(item.nome)}
+            </strong>
+            <br>
+            ${esc(item.telefone)}
+          </td>
+
+          <td>
+            ${esc(item.servico)}
+          </td>
+
+          <td>
+            ${esc(item.profissional)}
+          </td>
+
+          <td>
+            ${esc(
+              formatDateBR(
+                item.data
+              )
+            )}
+          </td>
+
+          <td>
+            ${esc(
+              formatTime(
+                item.horario
+              )
+            )}
+          </td>
+
+          <td>
+            <span class="status">
+              ${esc(item.status)}
+            </span>
+          </td>
+
+          <td>
+
+            <button
+              class="action-btn"
+              data-id="${esc(item.id)}"
+            >
+              EXCLUIR
+            </button>
+
+          </td>
+
+        `;
+
+
+        rows.appendChild(tr);
+
+      }
+    );
+
+
+  renderCalendar();
+
+  renderSelected();
+
+}
+
+
+/* =========================================================
+   ABRIR PAINEL
+========================================================= */
+
+async function openApp(){
+
+  login.style.display =
+    'none';
+
+  app.style.display =
+    'block';
+
+  selectedKey =
+    todayKey();
+
+  await carregarAgendamentos();
+
+}
+
+
+/* =========================================================
+   VERIFICAR SESSÃO
+========================================================= */
+
+async function verificarSessao(){
+
+  const {
+    data,
+    error: sessionError
+  } =
+    await supabaseClient
+      .auth
+      .getSession();
+
+
+  if(sessionError){
+
+    console.error(
+      sessionError
+    );
+
+    return;
+
+  }
+
+
+  if(data.session){
+
+    await openApp();
+
+  }else{
+
+    login.style.display =
+      'grid';
+
+    app.style.display =
+      'none';
+
+  }
+
+}
+
+
+verificarSessao();
+
+
+/* =========================================================
+   LOGIN SUPABASE AUTH
+========================================================= */
+
+document.getElementById(
+  'loginForm'
+).onsubmit =
+  async function(e){
+
+    e.preventDefault();
+
+
+    error.textContent = '';
+
+
+    const email =
+      document.getElementById(
+        'user'
+      ).value.trim();
+
+
+    const password =
+      document.getElementById(
+        'pass'
+      ).value;
+
+
+    loginButton.disabled =
+      true;
+
+    loginButton.textContent =
+      'ENTRANDO...';
+
+
+    const {
+      data,
+      error: authError
+    } =
+      await supabaseClient
+        .auth
+        .signInWithPassword({
+
+          email:email,
+
+          password:password
+
+        });
+
+
+    if(authError){
+
+      console.error(
+        authError
+      );
+
+      error.textContent =
+        'E-mail ou senha inválidos.';
+
+      loginButton.disabled =
+        false;
+
+      loginButton.textContent =
+        'ENTRAR';
+
+      return;
+
+    }
+
+
+    loginButton.disabled =
+      false;
+
+    loginButton.textContent =
+      'ENTRAR';
+
+
+    if(data.session){
+
+      await openApp();
+
+    }
+
+  };
+
+
+/* =========================================================
+   OBSERVAR LOGIN / LOGOUT
+========================================================= */
+
+supabaseClient
+  .auth
+  .onAuthStateChange(
+    function(event, session){
+
+      if(event === 'SIGNED_OUT'){
+
+        app.style.display =
+          'none';
+
+        login.style.display =
+          'grid';
+
+      }
+
+    }
+  );
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+document.getElementById(
+  'logout'
+).onclick =
+  async function(){
+
+    const {
+      error: logoutError
+    } =
+      await supabaseClient
+        .auth
+        .signOut();
+
+
+    if(logoutError){
+
+      mostrarErro(
+        'Erro ao sair: '
+        + logoutError.message
+      );
+
+      return;
+
+    }
+
+
+    app.style.display =
+      'none';
+
+    login.style.display =
+      'grid';
+
+
+    document.getElementById(
+      'pass'
+    ).value = '';
+
+  };
+
+
+/* =========================================================
+   CALENDÁRIO - ANTERIOR
+========================================================= */
+
+document.getElementById(
+  'prev'
+).onclick =
+  function(){
+
+    viewDate =
+      new Date(
+        viewDate.getFullYear(),
+        viewDate.getMonth()-1,
+        1
+      );
+
+    renderCalendar();
+
+  };
+
+
+/* =========================================================
+   CALENDÁRIO - PRÓXIMO
+========================================================= */
+
+document.getElementById(
+  'next'
+).onclick =
+  function(){
+
+    viewDate =
+      new Date(
+        viewDate.getFullYear(),
+        viewDate.getMonth()+1,
+        1
+      );
+
+    renderCalendar();
+
+  };
+
+
+/* =========================================================
+   EXCLUIR
+========================================================= */
+
+rows.onclick =
+  async function(e){
+
+    const button =
+      e.target.closest(
+        '.action-btn'
+      );
+
+
+    if(!button) return;
+
+
+    const id =
+      button.dataset.id;
+
+
+    if(
+      !confirm(
+        'Excluir este agendamento?'
+      )
+    ){
+
+      return;
+
+    }
+
+
+    button.disabled =
+      true;
+
+    button.textContent =
+      'EXCLUINDO...';
+
+
+    const {
+      error: deleteError
+    } =
+      await supabaseClient
+        .from('agendamentos')
+        .delete()
+        .eq('id', id);
+
+
+    if(deleteError){
+
+      button.disabled =
+        false;
+
+      button.textContent =
+        'EXCLUIR';
+
+
+      mostrarErro(
+        'Erro ao excluir: '
+        + deleteError.message
+      );
+
+      return;
+
+    }
+
+
+    agendamentos =
+      agendamentos.filter(
+        item =>
+          String(item.id)
+          !== String(id)
+      );
+
+
+    render();
+
+  };
+
+
+/* =========================================================
+   LIMPAR TODOS
+========================================================= */
+
+clearButton.onclick =
+  async function(){
+
+    if(!agendamentos.length){
+
+      alert(
+        'Não existem agendamentos para limpar.'
+      );
+
+      return;
+
+    }
+
+
+    const confirmed =
+      confirm(
+        'ATENÇÃO: isso irá excluir TODOS '
+        + 'os agendamentos do banco de dados. '
+        + 'Deseja continuar?'
+      );
+
+
+    if(!confirmed) return;
+
+
+    clearButton.disabled =
+      true;
+
+    clearButton.textContent =
+      'LIMPANDO...';
+
+
+    const {
+      error: deleteError
+    } =
+      await supabaseClient
+        .from('agendamentos')
+        .delete()
+        .not(
+          'id',
+          'is',
+          null
+        );
+
+
+    if(deleteError){
+
+      clearButton.disabled =
+        false;
+
+      clearButton.textContent =
+        'LIMPAR TESTES';
+
+
+      mostrarErro(
+        'Erro ao limpar agendamentos: '
+        + deleteError.message
+      );
+
+      return;
+
+    }
+
+
+    agendamentos = [];
+
+    render();
+
+
+    clearButton.disabled =
+      false;
+
+    clearButton.textContent =
+      'LIMPAR TESTES';
+
+  };
+
+
+/* =========================================================
+   REALTIME
+========================================================= */
+
+const channel =
+  supabaseClient
+    .channel(
+      'bella-vita-agendamentos'
+    )
+    .on(
+      'postgres_changes',
+      {
+        event:'*',
+        schema:'public',
+        table:'agendamentos'
+      },
+      function(){
+
+        carregarAgendamentos();
+
+      }
+    )
+    .subscribe();
+
+
+/* =========================================================
+   PRIMEIRO RENDER
+========================================================= */
+
+selectedKey =
+  todayKey();
+
+render();
+
+</script>
+
+</body>
+</html>
