@@ -1,1 +1,217 @@
 
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CredRating — Análise de Crédito</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font:15px Arial,sans-serif;background:#f1f5f9;color:#172033}
+header{background:#102b59;color:white;padding:24px}
+main{max-width:1000px;margin:24px auto;padding:0 16px}
+section{background:white;padding:20px;border-radius:12px;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+label{display:block;font-weight:bold;margin-bottom:6px}
+input,textarea,select{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:7px;margin-bottom:12px}
+button{background:#1749a2;color:white;border:0;border-radius:7px;padding:12px 16px;cursor:pointer;margin:4px}
+.metric{background:#eff6ff;border-radius:8px;padding:16px}
+.metric strong{display:block;font-size:24px;margin-top:8px}
+.muted{color:#64748b;font-size:13px}
+table{width:100%;border-collapse:collapse}
+td,th{text-align:left;padding:9px;border-bottom:1px solid #ddd}
+</style>
+</head>
+<body>
+<header>
+  <h1>CredRating</h1>
+  <p>Análise de crédito baseada em documentos reais</p>
+</header>
+<main>
+<section>
+<h2>1. Documentos</h2>
+<div class="grid">
+<div><label>Relatório SCR (PDF)</label><input id="scr" type="file" accept=".pdf"></div>
+<div><label>Relatório Serasa (PDF)</label><input id="serasa" type="file" accept=".pdf"></div>
+<div><label>Holerites (PDF)</label><input id="holerite" type="file" accept=".pdf" multiple></div>
+</div>
+<button onclick="lerPDFs()">Extrair texto dos PDFs</button>
+<p id="status" class="muted">Os documentos são processados no navegador.</p>
+<label>Texto SCR extraído</label><textarea id="txtScr" rows="4"></textarea>
+<label>Texto Serasa extraído</label><textarea id="txtSerasa" rows="4"></textarea>
+<label>Texto dos holerites</label><textarea id="txtHolerite" rows="4"></textarea>
+<p class="muted">A extração de texto não confirma automaticamente os valores. Confira os documentos originais.</p>
+</section>
+
+<section>
+<h2>2. Dados conferidos pelo analista</h2>
+<div class="grid">
+<div><label>Renda líquida mensal (R$)</label><input id="renda" type="number" min="0" step=".01"></div>
+<div><label>Parcelas mensais existentes (R$)</label><input id="parcelas" type="number" min="0" step=".01"></div>
+<div><label>Saldo total SCR (R$)</label><input id="dividas" type="number" min="0" step=".01"></div>
+<div><label>Saldo vencido (R$)</label><input id="vencido" type="number" min="0" step=".01"></div>
+<div><label>Score Serasa (0 a 1000)</label><input id="score" type="number" min="0" max="1000"></div>
+<div><label>Negativação vigente</label>
+<select id="negativacao"><option value="na">Não verificado</option><option value="sim">Sim</option><option value="nao">Não identificada</option></select></div>
+<div><label>Documentos conferidos?</label>
+<select id="conferido"><option value="nao">Não</option><option value="sim">Sim</option></select></div>
+<div><label>Limite solicitado (R$)</label><input id="solicitado" type="number" min="0" step=".01"></div>
+</div>
+<button onclick="calcular()">Calcular rating e limite</button>
+<button onclick="window.print()">Imprimir relatório</button>
+</section>
+
+<section>
+<h2>3. Resultado</h2>
+<div class="grid">
+<div class="metric">Rating interno<strong id="rating">—</strong></div>
+<div class="metric">Comprometimento<strong id="comprometimento">—</strong></div>
+<div class="metric">Limite sugerido<strong id="limite">—</strong></div>
+<div class="metric">Pontuação<strong id="pontos">—</strong></div>
+</div>
+<h3>Memória de cálculo</h3>
+<table><thead><tr><th>Indicador</th><th>Resultado</th></tr></thead><tbody id="tabela"></tbody></table>
+<h3>Justificativas</h3><ul id="justificativas"></ul>
+<p class="muted">Rating experimental próprio, não oficial. As regras devem ser calibradas e validadas antes do uso comercial.</p>
+<button onclick="exportar()">Exportar CSV</button>
+</section>
+</main>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+async function extrair(arquivo){
+  const pdf=await pdfjsLib.getDocument({data:await arquivo.arrayBuffer()}).promise;
+  let texto='';
+  for(let i=1;i<=pdf.numPages;i++){
+    const pagina=await pdf.getPage(i);
+    const conteudo=await pagina.getTextContent();
+    texto+=conteudo.items.map(x=>x.str).join(' ')+'\n';
+  }
+  return texto;
+}
+async function lerPDFs(){
+  try{
+    const tarefas=[
+      ['scr','txtScr'],
+      ['serasa','txtSerasa'],
+      ['holerite','txtHolerite']
+    ];
+    for(const [arquivoId,saidaId] of tarefas){
+      const arquivos=[...document.getElementById(arquivoId).files];
+      const textos=[];
+      for(const arquivo of arquivos) textos.push(await extrair(arquivo));
+      if(textos.length) document.getElementById(saidaId).value=textos.join('\n');
+    }
+    document.getElementById('status').textContent=
+      'Leitura concluída. Confira os dados nos PDFs originais.';
+  }catch(e){
+    document.getElementById('status').textContent='Erro ao ler PDF: '+e.message;
+  }
+}
+const valor=id=>{
+  const s=document.getElementById(id).value.trim();
+  return s===''?null:Number(s);
+};
+const reais=n=>n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+let relatorio=null;
+
+function calcular(){
+  const renda=valor('renda'), parcelas=valor('parcelas'),
+    dividas=valor('dividas'), vencido=valor('vencido'),
+    score=valor('score'), solicitacao=valor('solicitado');
+  const neg=document.getElementById('negativacao').value;
+  const conferido=document.getElementById('conferido').value==='sim';
+
+  const campos=[renda,parcelas,dividas,vencido,score,solicitacao];
+  if(campos.some(v=>v!==null&&(!Number.isFinite(v)||v<0))){
+    alert('Verifique os valores informados.');return;
+  }
+  if(score!==null&&score>1000){alert('Score deve estar entre 0 e 1000.');return;}
+  if(renda!==null&&renda===0&&parcelas!==null){
+    alert('Renda zero: não é possível calcular comprometimento.');return;
+  }
+  if(vencido!==null&&dividas!==null&&vencido>dividas){
+    alert('Saldo vencido maior que saldo total. Confira os documentos.');return;
+  }
+
+  let p=50;
+  const justificativas=[],linhas=[];
+  let fatores=0;
+
+  if(score!==null){
+    fatores++;
+    const ajuste=score>=800?10:score>=700?5:score>=600?0:score>=500?-10:-20;
+    p+=ajuste;
+    justificativas.push(`Score informado: ${score}/1000; ajuste demonstrativo de ${ajuste} pontos.`);
+    linhas.push(['Score Serasa informado',score+'/1000']);
+  }else justificativas.push('Score Serasa não informado.');
+
+  let comp=null;
+  if(renda!==null&&renda>0&&parcelas!==null){
+    comp=parcelas/renda;fatores++;
+    const ajuste=comp<=.2?15:comp<=.3?5:comp<=.4?-5:comp<=.5?-15:-25;
+    p+=ajuste;
+    linhas.push(['Comprometimento da renda',(comp*100).toFixed(1)+'%']);
+    justificativas.push(`${reais(parcelas)} em parcelas / ${reais(renda)} de renda = ${(comp*100).toFixed(1)}%. Ajuste: ${ajuste}.`);
+  }else justificativas.push('Informe renda líquida e parcelas mensais para calcular comprometimento.');
+
+  if(vencido!==null){
+    fatores++;
+    if(vencido>0){p-=25;justificativas.push('Saldo vencido informado: '+reais(vencido)+'.');}
+    else {p+=5;justificativas.push('Saldo vencido informado igual a zero; confirme o período e a cobertura dos dados.');}
+    linhas.push(['Saldo vencido informado',reais(vencido)]);
+  }else justificativas.push('Saldo vencido não informado.');
+
+  if(neg==='sim'){p-=35;fatores++;justificativas.push('Negativação confirmada: bloqueia aprovação automática neste protótipo.');}
+  else if(neg==='nao'){p+=5;fatores++;justificativas.push('Negativação não identificada conforme seleção do analista.');}
+  else justificativas.push('Negativação não verificada.');
+
+  if(dividas!==null){fatores++;linhas.push(['Saldo total SCR informado',reais(dividas)]);}
+  else justificativas.push('Saldo SCR não informado.');
+
+  p=Math.max(0,Math.min(100,Math.round(p)));
+  const rating=p>=85?'A':p>=70?'B':p>=55?'C':p>=40?'D':'E';
+
+  // Exemplo de política interna; não é regra de instituição financeira.
+  const capacidade=renda!==null&&parcelas!==null&&renda>0?
+    Math.max(0,renda*.30-parcelas):null;
+  const multiplicador={A:6,B:4,C:2,D:1,E:0}[rating];
+  let limite=capacidade===null?null:capacidade*multiplicador;
+
+  if(!conferido||fatores<3||neg!=='nao'||(vencido!==null&&vencido>0)) limite=0;
+
+  document.getElementById('rating').textContent=rating;
+  document.getElementById('pontos').textContent=p+'/100';
+  document.getElementById('comprometimento').textContent=comp===null?'N/D':(comp*100).toFixed(1)+'%';
+  document.getElementById('limite').textContent=limite===null?'N/D':reais(limite);
+  if(solicitacao!==null) justificativas.push('Limite solicitado: '+reais(solicitacao)+'.');
+  justificativas.push('Pontuação e multiplicadores são parâmetros demonstrativos, que precisam de validação.');
+  justificativas.push('Limite baseado em 30% da renda líquida menos parcelas conhecidas. Não é oferta de crédito nem aprovação oficial.');
+
+  document.getElementById('tabela').innerHTML='';
+  for(const [a,b] of linhas){
+    const tr=document.createElement('tr');
+    for(const t of [a,b]){const td=document.createElement('td');td.textContent=t;tr.appendChild(td);}
+    document.getElementById('tabela').appendChild(tr);
+  }
+  const ul=document.getElementById('justificativas');ul.innerHTML='';
+  justificativas.forEach(t=>{const li=document.createElement('li');li.textContent=t;ul.appendChild(li);});
+  relatorio={rating,pontos:p,comprometimento:comp,limite,linhas,justificativas};
+}
+function exportar(){
+  if(!relatorio){alert('Calcule a análise antes de exportar.');return;}
+  const linhas=[['Campo','Valor'],['Rating',relatorio.rating],
+    ['Pontuação',relatorio.pontos],['Comprometimento',relatorio.comprometimento??'N/D'],
+    ['Limite sugerido',relatorio.limite??'N/D'],
+    ...relatorio.linhas,...relatorio.justificativas.map(x=>['Justificativa',x])];
+  const csv=linhas.map(l=>l.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(';')).join('\r\n');
+  const url=URL.createObjectURL(new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8'}));
+  const a=document.createElement('a');a.href=url;a.download='analise-credrating.csv';a.click();
+  URL.revokeObjectURL(url);
+}
+</script>
+</body>
+</html>
