@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rating bancário · Serasa, Bacen e renda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef1f4;--card:#fff;--ink:#14202b;--mut:#5b6875;--line:#d6dce2;--acc:#0f6b6b;--warn:#b7791f;--bad:#a23b3b;--ok:#2f7d4f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Public Sans",system-ui,sans-serif}
+header{max-width:1100px;margin:0 auto;padding:28px 20px 8px}
+h1{font:700 30px/1.15 Newsreader,Georgia,serif;margin:0 0 6px}
+header p{margin:0;color:var(--mut);max-width:62ch}
+main{max-width:1100px;margin:0 auto;padding:16px 20px 48px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:24px;align-items:start}
+@media(max-width:860px){main{grid-template-columns:1fr}}
+fieldset{background:var(--card);border:1px solid var(--line);border-radius:6px;margin:0 0 16px;padding:16px 18px 6px}
+legend{font:700 18px Newsreader,Georgia,serif;padding:0 6px}
+.note{color:var(--mut);font-size:13px;margin:0 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:0 14px}
+label{display:block;font-size:13px;font-weight:500;margin-bottom:12px}
+input,select{width:100%;margin-top:4px;padding:8px 10px;border:1px solid var(--line);border-radius:4px;font:inherit;background:#fff;color:var(--ink)}
+input:focus,select:focus,button:focus-visible{outline:2px solid var(--acc);outline-offset:1px}
+small{display:block;color:var(--mut);font-weight:400}
+table{width:100%;border-collapse:collapse;margin-bottom:10px}
+th{font-size:12px;text-align:left;color:var(--mut);font-weight:500;padding:0 6px 2px 0}
+td{padding:0 6px 6px 0}td:first-child{font-size:13px;color:var(--mut);white-space:nowrap}
+aside{position:sticky;top:12px}
+@media(max-width:860px){aside{position:static}}
+.res{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:20px}
+.top{display:flex;align-items:center;gap:20px;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:14px}
+.letter{font:700 84px/1 Newsreader,Georgia,serif;min-width:116px;text-align:center;border-right:1px solid var(--line);padding-right:20px}
+.dec{font-weight:600;font-size:17px}.sub{color:var(--mut);font-size:13px}
+.bar{margin:10px 0}.bar b{display:flex;justify-content:space-between;font-size:13px;font-weight:500}
+.track{height:8px;background:#e5e9ed;border-radius:4px;overflow:hidden;margin-top:4px}
+.fill{height:100%;background:var(--acc);transition:width .25s}
+dl{display:grid;grid-template-columns:1fr auto;gap:4px 12px;margin:14px 0;font-size:14px}
+dt{color:var(--mut)}dd{margin:0;font-weight:600;text-align:right}
+ul{margin:8px 0 0;padding-left:18px;font-size:13px}li{margin-bottom:4px}
+.w{color:var(--warn)}.b{color:var(--bad)}.g{color:var(--ok)}
+.act{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+button{font:inherit;font-weight:500;padding:8px 14px;border-radius:4px;border:1px solid var(--acc);background:var(--acc);color:#fff;cursor:pointer}
+button.s{background:#fff;color:var(--acc)}
+.lgpd{font-size:12px;color:var(--mut);margin-top:12px}
+@media print{.act,.lgpd{display:none}body{background:#fff}aside{position:static}main{display:block}fieldset{break-inside:avoid}}
+@media(prefers-reduced-motion:reduce){.fill{transition:none}}
+</style>
+</head>
+<body>
+<header>
+<h1>Rating bancário do tomador</h1>
+<p>Combina score e restrições do Serasa, o histórico no SCR do Banco Central e a renda comprovada em holerites. Escala AA a H, no padrão da Resolução CMN 2.682.</p>
+</header>
+<main>
+<form id="f" onsubmit="return false"><div id="form"></div></form>
+<aside>
+<div class="res" id="res" aria-live="polite"></div>
+<p class="lgpd">Tudo é calculado no seu navegador. Nenhum dado é enviado a servidores nem salvo. Ferramenta de apoio à análise: não substitui a política de crédito da instituição.</p>
+</aside>
+</main>
+<script>
+const $=id=>document.getElementById(id),num=id=>parseFloat($(id).value)||0,clamp=(x,a=0,b=100)=>Math.min(b,Math.max(a,x));
+const brl=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const SEC=[
+{t:'Serasa',n:'Dados do relatório Serasa do CPF (score e restrições).',f:[
+['serScore','Score (0 a 1000)',0,1000,600],['serNeg','Negativações (quantidade)'],['serNegVal','Valor negativado (R$)'],['serProt','Protestos e cheques sem fundo (quantidade)']]},
+{t:'Banco Central (SCR)',n:'Dados do relatório SCR, obtido no Registrato do Bacen.',f:[
+['bacClasse','Pior classificação de risco','sel'],['bacDivida','Dívida total no sistema financeiro (R$)'],['bacVencida','Vencido há mais de 90 dias (R$)'],['bacPrej','Prejuízo registrado (R$)'],['bacAtraso','Maior atraso atual (dias)'],['bacRot','Uso do limite rotativo (%)',0,100],['bacInst','Instituições com operações (quantidade)']]},
+{t:'Renda e vínculo',n:'Informe até três holerites recentes.',custom:1},
+{t:'Operação pretendida',n:'Valor e prazo que o cliente pediu.',f:[
+['parc','Parcelas mensais já assumidas (R$)'],['pedido','Valor solicitado (R$)'],['prazo','Prazo (meses)',1,120,36]]}];
+let h='';
+SEC.forEach(s=>{h+=`<fieldset><legend>${s.t}</legend><p class="note">${s.n}</p>`;
+if(s.custom){h+=`<table><tr><th></th><th>Bruto (R$)</th><th>Descontos (R$)</th><th>Líquido (R$)</th></tr>`;
+[1,2,3].forEach(i=>h+=`<tr><td>Holerite ${i}</td>${['b','d','l'].map(k=>`<td><input id="${k}${i}" type="number" min="0" step="any" inputmode="decimal" aria-label="${k=='b'?'Bruto':k=='d'?'Descontos':'Líquido'} do holerite ${i}"></td>`).join('')}</tr>`);
+h+=`</table><div class="grid"><label>Tipo de vínculo<select id="vinc"><option value="clt">CLT</option><option value="servidor">Servidor público</option><option value="aposentado">Aposentado ou pensionista</option><option value="autonomo">Autônomo ou PJ</option></select></label><label>Tempo no vínculo (meses)<input id="meses" type="number" min="0" step="1" inputmode="numeric"></label></div>`}
+else{h+='<div class="grid">';s.f.forEach(([id,l,mn,mx,def])=>{
+if(mn==='sel')h+=`<label>${l}<select id="${id}">${'ABCDEFGH'.split('').map(c=>`<option>${c}</option>`).join('')}</select><small>A = melhor, H = pior</small></label>`;
+else h+=`<label>${l}<input id="${id}" type="number" min="${mn??0}" ${mx?`max="${mx}"`:''} step="any" inputmode="decimal" ${def?`value="${def}"`:''}></label>`});h+='</div>'}
+h+='</fieldset>'});
+$('form').innerHTML=h;
+const RAT=[['AA',92,0,1.5],['A',84,.5,1.8],['B',75,1,2.2],['C',65,3,2.8],['D',55,10,3.6],['E',45,30,4.8],['F',35,50,0],['G',25,70,0],['H',0,100,0]];
+const CLS={A:100,B:90,C:75,D:55,E:40,F:25,G:10,H:0},VINC={servidor:100,aposentado:95,clt:90,autonomo:65};
+let last=null;
+function calc(){
+const why=[],liq=[1,2,3].map(i=>num('l'+i)).filter(x=>x>0);
+[1,2,3].forEach(i=>{const b=num('b'+i),d=num('d'+i),l=num('l'+i);if(b&&l&&Math.abs(b-d-l)>1)why.push(['w',`Holerite ${i}: bruto menos descontos (${brl(b-d)}) não bate com o líquido informado.`])});
+const renda=liq.length?liq.reduce((a,b)=>a+b,0)/liq.length:0;
+// Serasa
+let s=num('serScore')/10;const neg=num('serNeg'),prot=num('serProt');
+s-=Math.min(30,neg*8)+Math.min(20,prot*10);
+if(neg)why.push(['b',`${neg} negativação(ões) no Serasa somando ${brl(num('serNegVal'))}.`]);
+if(prot)why.push(['b',`${prot} protesto(s) ou cheque(s) sem fundo.`]);
+if(num('serScore')<500)why.push(['w','Score Serasa abaixo de 500.']);
+const ser=clamp(s);
+// Bacen
+let c=CLS[$('bacClasse').value];const ven=num('bacVencida'),prej=num('bacPrej'),rot=num('bacRot'),div=num('bacDivida');
+if(ven>0){c-=25;why.push(['b',`${brl(ven)} vencidos há mais de 90 dias no SCR.`])}
+if(prej>0){c-=40;why.push(['b',`Prejuízo de ${brl(prej)} registrado no SCR.`])}
+if(rot>80){c-=10;why.push(['w','Rotativo acima de 80% do limite.'])}else if(rot>50)c-=5;
+if(num('bacInst')>5)c-=5;
+if(renda>0){const r=div/(renda*12);if(r>1){c-=20;why.push(['w','Dívida no sistema financeiro maior que a renda anual.'])}else if(r>.5)c-=10}
+const bac=clamp(c);
+// Renda
+let rs=0,dti=0,cv=0;
+if(renda>0){dti=num('parc')/renda;
+const sd=Math.sqrt(liq.reduce((a,x)=>a+(x-renda)**2,0)/liq.length);cv=sd/renda;
+const dtiS=dti<=.2?100:clamp(100*(.5-dti)/.3),cons=liq.length>1?clamp(100-cv*300):60,
+est=VINC[$('vinc').value]*(.6+.4*Math.min(num('meses'),24)/24);
+rs=clamp(.5*dtiS+.25*est+.25*cons);
+if(dti>.4)why.push(['b',`Parcelas atuais comprometem ${(dti*100).toFixed(0)}% da renda líquida.`]);
+if(cv>.15)why.push(['w','Renda líquida varia bastante entre os holerites.']);
+if(liq.length<3)why.push(['w','Menos de três holerites informados: comprovação de renda fraca.'])}
+else why.push(['b','Sem renda líquida informada: o pilar de renda fica zerado.']);
+let tot=.35*ser+.35*bac+.30*rs;
+if(prej>0){tot=Math.min(tot,34);}
+if(!renda)tot=Math.min(tot,44);
+const at=num('bacAtraso'),fl=at>180?8:at>150?7:at>120?6:at>90?5:at>60?4:at>30?3:at>=15?2:0,sidx=RAT.findIndex(r=>tot>=r[1]),idx=Math.max(sidx,fl),R=RAT[idx];
+if(fl>sidx)why.push(['b',`Atraso de ${at} dias impõe rating mínimo ${RAT[fl][0]} (Res. CMN 2.682), acima do que a pontuação indicaria.`]);
+// Capacidade
+const maxP=Math.max(0,.3*renda-num('parc')),i=R[3]/100,n=Math.max(1,num('prazo')||1);
+const pv=i?maxP*(1-Math.pow(1+i,-n))/i:0,ped=num('pedido');
+let dec,cls;
+if(idx<=3&&pv>0){cls='g';dec=ped>pv?'Aprovar com valor reduzido':'Aprovar'}
+else if(idx<=5&&pv>0){cls='w';dec='Análise manual ou garantias'}
+else{cls='b';dec='Não recomendado'}
+if(idx<=5&&ped>pv&&pv>0&&idx<=3)why.push(['w',`Valor pedido excede a capacidade estimada de ${brl(pv)}.`]);
+if(!why.length)why.push(['g','Nenhum ponto de alerta encontrado.']);
+last={rating:R[0],pontuacao:+tot.toFixed(1),pilares:{serasa:+ser.toFixed(1),bacen:+bac.toFixed(1),renda:+rs.toFixed(1)},rendaLiquidaMedia:renda,comprometimento:dti,parcelaMaxima:maxP,valorMaximo:pv,taxaMensal:R[3],provisao:R[2],decisao:dec,alertas:why.map(w=>w[1])};
+const bar=(l,v)=>`<div class="bar"><b><span>${l}</span><span>${v.toFixed(0)}/100</span></b><div class="track"><div class="fill" style="width:${v}%"></div></div></div>`;
+$('res').innerHTML=`<div class="top"><div class="letter ${cls}">${R[0]}</div><div><div class="dec ${cls}">${dec}</div><div class="sub">Pontuação ${tot.toFixed(1)} de 100</div></div></div>
+${bar('Serasa (35%)',ser)}${bar('Bacen SCR (35%)',bac)}${bar('Renda (30%)',rs)}
+<dl><dt>Renda líquida média</dt><dd>${brl(renda)}</dd><dt>Comprometimento atual</dt><dd>${(dti*100).toFixed(1)}%</dd><dt>Parcela máxima (30% da renda)</dt><dd>${brl(maxP)}</dd><dt>Taxa de referência</dt><dd>${R[3]?R[3].toFixed(1).replace('.',',')+'% a.m.':'—'}</dd><dt>Valor máximo em ${n} meses</dt><dd>${brl(pv)}</dd><dt>Provisão (CMN 2.682)</dt><dd>${R[2]}%</dd></dl>
+<ul>${why.map(([k,t])=>`<li class="${k}">${t}</li>`).join('')}</ul>
+<div class="act"><button type="button" onclick="window.print()">Imprimir ou salvar PDF</button><button type="button" class="s" onclick="exp()">Exportar JSON</button></div>`}
+function exp(){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(last,null,2)],{type:'application/json'}));a.download='rating.json';a.click()}
+$('f').addEventListener('input',calc);calc();
+</script>
+</body>
+</html>

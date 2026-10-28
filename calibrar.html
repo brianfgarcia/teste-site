@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calibração do rating · histórico de inadimplência</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef1f4;--ink:#14202b;--mut:#5b6875;--line:#d6dce2;--acc:#0f6b6b;--bad:#a23b3b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Public Sans",system-ui,sans-serif}
+.w{max-width:960px;margin:0 auto;padding:24px 20px 48px}
+h1{font:700 28px Newsreader,Georgia,serif;margin:0 0 6px}h2{font:700 19px Newsreader,Georgia,serif;margin:22px 0 8px}
+p{color:var(--mut);max-width:70ch}a{color:var(--acc)}
+.c{background:#fff;border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-top:14px}
+textarea{width:100%;height:150px;font:12px/1.4 ui-monospace,Menlo,monospace;border:1px solid var(--line);border-radius:4px;padding:8px}
+button,.b{font:inherit;font-weight:500;padding:8px 14px;border-radius:4px;border:1px solid var(--acc);background:var(--acc);color:#fff;cursor:pointer;margin:8px 8px 0 0}
+button.s{background:#fff;color:var(--acc)}button:focus-visible,textarea:focus{outline:2px solid var(--acc)}
+table{border-collapse:collapse;width:100%;font-size:13px;display:block;overflow-x:auto}th,td{padding:5px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}th:first-child,td:first-child{text-align:left}
+.k{display:flex;gap:28px;flex-wrap:wrap}.k div{font-size:13px;color:var(--mut)}.k b{display:block;font:700 26px Newsreader,Georgia,serif;color:var(--ink)}
+.e{color:var(--bad);font-weight:500}
+</style>
+</head>
+<body><div class="w">
+<h1>Calibração com o histórico da carteira</h1>
+<p>Um rating só tem valor estatístico quando os pesos saem de dados reais de inadimplência. Cole abaixo uma base histórica e a página ajusta uma regressão logística, mede o poder de separação e mostra a taxa de inadimplência observada em cada letra. Os dados ficam no seu navegador.</p>
+<div class="c">
+<b>Formato do CSV</b>
+<p>Primeira linha com os nomes das colunas. Todas as colunas devem ser numéricas e uma delas, chamada <code>inadimplente</code>, vale 1 se o cliente ficou 90 dias ou mais em atraso nos 12 meses seguintes à concessão, e 0 se não. As demais são as variáveis explicativas, por exemplo <code>serScore, serNeg, bacClasse, dti, meses</code>. Converta a classe A–H do SCR em 0–7. Use ponto como decimal e vírgula ou ponto e vírgula como separador.</p>
+<textarea id="t" aria-label="Base histórica em CSV" placeholder="serScore,serNeg,bacClasse,dti,meses,inadimplente&#10;720,0,0,0.18,36,0"></textarea>
+<input id="fl" type="file" accept=".csv,.txt" hidden>
+<button onclick="$('fl').click()" class="s">Abrir arquivo CSV</button>
+<button onclick="run()">Calibrar</button>
+<button class="s" onclick="demo()">Gerar dados sintéticos de teste</button>
+<p id="msg"></p>
+</div>
+<div id="out"></div>
+</div>
+<script>
+const $=i=>document.getElementById(i),sg=z=>1/(1+Math.exp(-z)),pc=v=>(v*100).toFixed(2).replace('.',',')+'%';
+const BANDS=[['AA',.005],['A',.01],['B',.02],['C',.04],['D',.08],['E',.15],['F',.30],['G',.50],['H',1]];
+$('fl').onchange=e=>{const r=new FileReader();r.onload=()=>{$('t').value=r.result};r.readAsText(e.target.files[0])};
+function parse(t){const L=t.trim().split(/\r?\n/),sep=L[0].includes(';')?';':',',H=L[0].split(sep).map(s=>s.trim()),yi=H.indexOf('inadimplente');
+if(yi<0)throw'Falta a coluna "inadimplente" (0 ou 1).';const X=[],y=[];
+L.slice(1).forEach(l=>{const c=l.split(sep).map(Number);if(c.length!==H.length||c.some(isNaN))return;y.push(c[yi]);X.push(c.filter((_,i)=>i!==yi))});
+return{names:H.filter((_,i)=>i!==yi),X,y}}
+function auc(p,y){const o=p.map((v,i)=>[v,y[i]]).sort((a,b)=>a[0]-b[0]);let r=0,np=0;o.forEach((x,i)=>{if(x[1]){r+=i+1;np++}});const nn=o.length-np;return(r-np*(np+1)/2)/(np*nn)}
+function ks(p,y){const o=p.map((v,i)=>[v,y[i]]).sort((a,b)=>b[0]-a[0]),P=y.reduce((a,b)=>a+b,0),N=y.length-P;let a=0,b=0,m=0;o.forEach(x=>{x[1]?a++:b++;m=Math.max(m,Math.abs(a/P-b/N))});return m}
+function run(){const m=$('msg');m.className='';m.textContent='';try{
+const D=parse($('t').value),n=D.y.length,k=D.names.length;
+if(n<200)throw'Poucos registros válidos ('+n+'). Use pelo menos algumas centenas, de preferência milhares.';
+const bad=D.y.reduce((a,b)=>a+b,0);if(bad<30)throw'Só '+bad+' inadimplentes na base: insuficiente para calibrar.';
+let s=7;const rnd=()=>(s=(s*16807)%2147483647)/2147483647,idx=[...Array(n).keys()].sort(()=>rnd()-.5),cut=Math.floor(n*.7),tr=idx.slice(0,cut),te=idx.slice(cut);
+const mu=[],sd=[];for(let j=0;j<k;j++){const v=tr.map(i=>D.X[i][j]),a=v.reduce((x,y)=>x+y,0)/v.length;mu.push(a);sd.push(Math.sqrt(v.reduce((x,y)=>x+(y-a)**2,0)/v.length)||1)}
+const Z=D.X.map(r=>r.map((v,j)=>(v-mu[j])/sd[j]));let w=Array(k).fill(0),b0=0;
+for(let it=0;it<1500;it++){const gw=Array(k).fill(0);let gb=0;tr.forEach(i=>{let z=b0;for(let j=0;j<k;j++)z+=w[j]*Z[i][j];const e=sg(z)-D.y[i];gb+=e;for(let j=0;j<k;j++)gw[j]+=e*Z[i][j]});
+b0-=.3*gb/cut;for(let j=0;j<k;j++)w[j]-=.3*(gw[j]/cut+.01*w[j])}
+const pr=i=>{let z=b0;for(let j=0;j<k;j++)z+=w[j]*Z[i][j];return sg(z)},pt=te.map(pr),yt=te.map(i=>D.y[i]),A=auc(pt,yt);
+const cnt=BANDS.map(()=>[0,0,0]);pt.forEach((p,q)=>{const bi=BANDS.findIndex(b=>p<=b[1]);cnt[bi][0]++;cnt[bi][1]+=yt[q];cnt[bi][2]+=p});
+$('out').innerHTML=`<div class="c"><div class="k"><div><b>${n.toLocaleString('pt-BR')}</b>registros válidos</div><div><b>${pc(bad/n)}</b>inadimplência da base</div><div><b>${A.toFixed(3).replace('.',',')}</b>AUC no teste (${te.length})</div><div><b>${(2*A-1).toFixed(3).replace('.',',')}</b>Gini</div><div><b>${(ks(pt,yt)*100).toFixed(1).replace('.',',')}</b>KS (%)</div></div>
+<p>${A<.6?'<span class="e">Poder de separação fraco (AUC abaixo de 0,60). As variáveis atuais pouco distinguem bons de maus pagadores.</span>':A<.7?'Poder de separação moderado. Vale testar outras variáveis.':'Poder de separação bom para um modelo de crédito pessoal.'} Medido em 30% dos registros que não entraram no ajuste.</p></div>
+<div class="c"><h2>Coeficientes (variáveis padronizadas)</h2><table><tr><th>Variável</th><th>Coeficiente</th><th>Média</th><th>Desvio</th></tr>${D.names.map((x,j)=>`<tr><td>${x}</td><td>${w[j].toFixed(3)}</td><td>${mu[j].toFixed(2)}</td><td>${sd[j].toFixed(2)}</td></tr>`).join('')}<tr><td>Intercepto</td><td>${b0.toFixed(3)}</td><td></td><td></td></tr></table><p>Sinal positivo aumenta a probabilidade de inadimplência.</p></div>
+<div class="c"><h2>Rating por faixa de probabilidade de inadimplência (base de teste)</h2><table><tr><th>Rating</th><th>PD até</th><th>Clientes</th><th>PD média</th><th>Inadimplência observada</th></tr>${BANDS.map((b,i)=>`<tr><td>${b[0]}</td><td>${i<8?pc(b[1]):'—'}</td><td>${cnt[i][0]}</td><td>${cnt[i][0]?pc(cnt[i][2]/cnt[i][0]):'—'}</td><td>${cnt[i][0]?pc(cnt[i][1]/cnt[i][0]):'—'}</td></tr>`).join('')}</table><p>Se a inadimplência observada acompanha a PD média em cada letra, o modelo está bem calibrado. Faixas com poucos clientes não são confiáveis.</p>
+<button onclick="dl()">Exportar modelo (JSON)</button></div>`;
+window.MOD={variaveis:D.names,media:mu,desvio:sd,coef:w,intercepto:b0,auc:A,faixasPD:BANDS}}catch(e){m.className='e';m.textContent=e}}
+function dl(){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(window.MOD,null,2)],{type:'application/json'}));a.download='modelo.json';a.click()}
+function demo(){let s=11;const r=()=>(s=(s*16807)%2147483647)/2147483647,o=['serScore,serNeg,bacClasse,dti,meses,inadimplente'];
+for(let i=0;i<4000;i++){const sc=Math.round(200+r()*750),ng=r()<.2?1+Math.floor(r()*3):0,cl=Math.min(7,Math.floor(r()*r()*8)),dti=+(r()*.6).toFixed(2),me=Math.floor(r()*120),z=-1.2-(sc-600)/150+.6*ng+.35*cl+3*dti-me/200;o.push([sc,ng,cl,dti,me,r()<sg(z)?1:0].join(','))}
+$('t').value=o.join('\n');$('msg').textContent='Dados sintéticos gerados só para testar a página. Não representam nenhuma carteira real.'}
+</script>
+</body>
+</html>
